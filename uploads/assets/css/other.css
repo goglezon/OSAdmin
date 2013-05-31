@@ -1,0 +1,28 @@
+.lead-top {
+    margin-top:1em;
+}
+
+.brand.brand-active {
+    color:#fff;
+}
+
+.bb-code {
+    font-family:"Courier";
+    font-size:1.2em;
+}
+
+.bb-code-small {
+    font-size:0.9em;
+}
+
+.bb-alert {
+	z-index:2000;
+	width:auto;
+    position:fixed;
+    bottom:75%;
+    right:40%;
+    margin-bottom:0;
+    font-size:1.2em;
+    padding:1em 1.3em;
+	border-radius:4px 4px 4px 4px;
+}
