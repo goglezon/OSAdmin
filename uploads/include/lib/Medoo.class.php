@@ -1,27 +1,29 @@
 <?php
 if(!defined('ACCESS')) {exit('Access denied.');}
 class Medoo{
-	protected $server = 'localhost';
-	
-	protected $username = 'root';
-	
+	protected $server = '';
+	protected $port ="";
+	protected $username = '';
 	protected $password = '';
-	
 	protected $database_name= '';
-
+	protected $pdo =null;
+	
 	// Optional
 	protected $charset = 'utf8';
 	
 	public function __construct($database){
 		try {
 			global $DATABASE_LIST;
-			$this->server=$DATABASE_LIST[$database][0];
-			$this->username=$DATABASE_LIST[$database][1];
-			$this->password=$DATABASE_LIST[$database][2];
-			$this->database_name=$DATABASE_LIST[$database][3];
-
-			$this->pdo = new PDO('mysql:host=' . $this->server . ';dbname=' . $this->database_name, $this->username,$this->password);
+			$this->server=$DATABASE_LIST[$database]['server'];
+            $this->port=$DATABASE_LIST[$database ]['port'];
+            $this->username=$DATABASE_LIST[$database]['username'];
+            $this->password=$DATABASE_LIST[$database]['password'];
+            $this->database_name=$DATABASE_LIST[$database]['db_name'];
+            
+            $this->pdo=null;
+            $this->pdo = new PDO('mysql:host=' . $this->server . ';port='.$this->port.';dbname=' . $this->database_name, $this->username,$this->password);
 			$this->pdo->exec('SET NAMES \'' . $this->charset . '\'');
+		 
 		}
 		catch (PDOException $e) {
 			echo $e->getMessage();

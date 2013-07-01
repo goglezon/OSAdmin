@@ -16,15 +16,15 @@
 
            <form id="tab" method="post" action="" autocomplete="off">
 				<label>登录名</label>
-				<input type="text" name="user_name" value="<{$_POST.user_name}>" class="input-xlarge" >
+				<input type="text" name="user_name" value="<{$_POST.user_name}>" class="input-xlarge" autofocus="true" required="true" >
 				<label>密码</label>
-				<input type="password" name="password" value="<{$_POST.password}>" class="input-xlarge">
+				<input type="password" name="password" value="<{$_POST.password}>" class="input-xlarge" required="true" >
 				<label>姓名</label>
-				<input type="text" name="real_name" value="<{$_POST.real_name}>" class="input-xlarge">
+				<input type="text" name="real_name" value="<{$_POST.real_name}>" class="input-xlarge" required="true" >
 				<label>手机</label>
-				<input type="text" name="mobile" value="<{$_POST.mobile}>" class="input-xlarge">
+				<input type="text" name="mobile" value="<{$_POST.mobile}>" class="input-xlarge" required pattern="\d{11}">
 				<label>邮件</label>
-				<input type="text" name="email" value="<{$_POST.email}>"  class="input-xlarge">
+				<input type="email" name="email" value="<{$_POST.email}>"  class="input-xlarge" required="true" >
 				<label>描述</label>
 				<textarea name="user_desc" rows="3" class="input-xlarge"><{$_POST.user_desc}></textarea>
 				<label>账号组</label>
@@ -36,9 +36,6 @@
 			</form>
         </div>
     </div>
-
-<!---操作的确认层，相当于javascript:confirm函数--->
-<{$osadmin_action_confirm}>
-</div>	
+</div>
 <!-- END 以下内容不需更改，请保证该TPL页内的标签匹配即可 -->
 <{ include file="footer.tpl" }>

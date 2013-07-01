@@ -3,7 +3,7 @@ require ('../include/init.inc.php');
 $md5 = $verify_code = '';
 extract ( $_REQUEST, EXTR_IF_EXISTS );
 
-if($md5!="org.osadmin.yuwenqi"){
+if($md5!="org.osadmin.somewhereyu"){
 	Common::exitWithError ('口令错误','index.php',99999);
 }
 if (Common::isPost ()) {

@@ -10,6 +10,7 @@ class SideBar {
 		//功能菜单
 		$data = array ();
 		$data = Module::getAllModules(1);
+		
 		$user_info = UserSession::getSessionInfo();
 		//用户的权限
 		$access = MenuUrl::getMenuByRole ( $user_info ['user_role'] );
@@ -22,8 +23,6 @@ class SideBar {
 				continue;
 			}
 			//去除无权限访问的
-			
-
 			foreach ( $list as $key => $value ) {
 				if (! in_array ( $value ['menu_url'], $access )) {
 					unset ( $list [$key] );
@@ -31,7 +30,6 @@ class SideBar {
 			}
 			$data [$k] ['menu_list'] = $list;
 		}
-	 
 		return $data;
 	}
 	
@@ -53,8 +51,6 @@ class SideBar {
 				continue;
 			}
 			//去除无权限访问的
-			
-
 			foreach ( $list as $key => $value ) {
 				if (! in_array ( $value ['menu_url'], $access )) {
 					unset ( $list [$key] );
@@ -62,7 +58,6 @@ class SideBar {
 			}
 			$data [$k] ['menu_list'] = $list;
 		}
-	 
 		return $data;
 	}
 }

@@ -8,11 +8,21 @@
 
 <div class="well">
     <ul class="nav nav-tabs">
-      <li class="active"><a href="#home" data-toggle="tab">资料</a></li>
-      <li ><a href="#profile" data-toggle="tab">密码</a></li>
+		<{ if $change_password }>
+			<li ><a href="#home" data-toggle="tab">资料</a></li>
+			<li class="active"><a href="#profile" data-toggle="tab">密码</a></li>
+		<{ else }>
+			<li class="active"><a href="#home" data-toggle="tab">资料</a></li>
+			<li><a href="#profile" data-toggle="tab">密码</a></li>
+		<{ /if}>
     </ul>
     <div id="myTabContent" class="tab-content">
+		
+		<{ if $change_password }>
+		  <div class="tab-pane fade" id="home">
+		<{ else }>
 		  <div class="tab-pane active in" id="home">
+		<{ /if}>
 			<form id="tab" method="post" action="" autocomplete="off">
 				<label>登录名</label>
 				<input type="text" name="user_name" value="<{$user_info.user_name}>" class="input-xlarge" readonly="true">
@@ -29,12 +39,16 @@
 				<{html_options name=show_quicknote id="DropDownTimezone" class="input-xlarge" options=$quicknoteOptions selected=$user_info.show_quicknote}>
 				
 				<div class="btn-toolbar">
-				<button type="submit" class="btn btn-primary"><i class="icon-save"></i> 保存</button>
-				<div class="btn-group"></div>
-			</div>
+					<button type="submit" class="btn btn-primary"><i class="icon-save"></i> 保存</button>
+					<div class="btn-group"></div>
+				</div>
 			</form>
 		  </div>
+		<{ if $change_password }>
+		<div class="tab-pane active in" id="profile">
+		<{ else }>
 		<div class="tab-pane fade" id="profile">
+		<{ /if}>
 			<form id="tab2" method="post" action="" autocomplete="off">
 				<input type="hidden" name="change_password" value="yes" >
 				<label>原密码</label>
@@ -47,9 +61,5 @@
 			</form>
 		</div>
   </div>
-</div>
-
-<!---操作的确认层，相当于javascript:confirm函数--->
-<{$osadmin_action_confirm}>
 </div>
 <{ include file="footer.tpl" }>

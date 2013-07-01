@@ -6,11 +6,9 @@ class Module extends Base {
 	// 查询字段
 	private static $columns = 'module_id, module_name, module_url, module_sort, module_desc,online';
 	
-	
 	public static function getTableName(){
 		return parent::$table_prefix.self::$table_name;
 	}
-	
 	//列表 
 	public static function getAllModules($is_online=null) {
 		$db=self::__instance();
@@ -20,12 +18,9 @@ class Module extends Base {
 			$condition['AND']=array("online"=>$is_online);
 		}else{
 		}
-		
 		$order = ' module_sort asc,module_id asc';
 		$condition['ORDER']=$order;
-		
 		$list = $db->select ( self::getTableName(), self::$columns, $condition );
-		
 		if ($list) {
 			return $list;
 		}
@@ -102,7 +97,7 @@ class Module extends Base {
 	
 	public static function getModuleForOptions() {
 		$module_options_array = array ();
-		$module_list = self::getAllModules ();
+		$module_list = self::getAllModules (1);
 		
 		foreach ( $module_list as $module ) {
 			$module_options_array [$module ['module_id']] = $module ['module_name'];
@@ -110,19 +105,4 @@ class Module extends Base {
 		
 		return $module_options_array;
 	}
-	/*
-	public static function getNamesForLog(){
-		$db=self::__instance();
-		$condition=array();
-		$list = $db->select ( self::getTableName(),self::$columns);
-		foreach($list as $item){
-			$ret[get_class().'='.$item['module_id']]=$item['module_name'];
-		}
-		if ($ret) {
-			return $ret;
-		}else{
-			return array();
-		}
-	}
-	*/
 }

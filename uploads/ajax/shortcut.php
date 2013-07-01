@@ -16,7 +16,7 @@ if($method=="add"){
 	$shortcuts = implode(',',$shortcut_arr);
 	$update_data = array ('shortcuts' => $shortcuts );
 		
-	$result = User::updateUserInfo ( $user_id,$update_data );
+	$result = User::updateUser ( $user_id,$update_data );
 	if($result !==false ){
 		$ret = json_encode(array("result"=>"1","msg"=>"添加成功"));
 		UserSession::reload();
@@ -35,7 +35,7 @@ if($method=="add"){
 	$shortcuts = implode(',',$shortcut_arr);
 	$update_data = array ('shortcuts' => $shortcuts );
 		
-	$result = User::updateUserInfo ( $user_id,$update_data );
+	$result = User::updateUser ( $user_id,$update_data );
 	if($result !==false ){
 		$ret = json_encode(array("result"=>"1","msg"=>"删除成功"));
 		UserSession::reload();

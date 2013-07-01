@@ -11,7 +11,7 @@
 <div class="block">
 	<a href="#page-stats" class="block-heading" data-toggle="collapse">Quick Note列表</a>
 	<div id="page-stats" class="block-body collapse in">
-		<table class="table">
+		<table class="table table-striped">
 			<thead>
 			<tr>
 				<th>#</th>
@@ -22,11 +22,9 @@
 			</thead>
 			<tbody>							  
 			<{foreach name=note from=$quicknotes item=note}>
-				<{if $smarty.foreach.note.index % 2  == 0}>
+				 
 				<tr>
-				<{else}>
-				<tr class="odd">
-				<{/if}>
+				 
 				<td><{$note.note_id}></td>
 				<td><{$note.owner_name}></td>
 				<td><{$note.note_content}></td>

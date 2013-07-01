@@ -13,22 +13,18 @@ class User extends Base{
 		return parent::$table_prefix.self::$table_name;
 	}
 	
-	public static function getUserInfoByName($user_name, $status = self::ACTIVE) {
+	public static function getUserByName($user_name) {
 		$db=self::__instance();
-		$condition = array("AND" => 
-						array("user_name[=]" => $user_name,
-						"status[=]" => $status,
-						)
-					);
-		$list = $db->select ( self::getTableName(), self::$columns, $condition );
-		
+		$sql= "select * ,g.group_name from ".self::getTableName() ." u,".UserGroup::getTableName()." g where u.user_name='$user_name' and u.user_group=g.group_id";
+		$list = $db->query($sql)->fetch();// self::getTableName(), self::$columns, $condition );
 		if ($list) {
-			return $list [0];
+			$list['login_time']=Common::getDateTime($list['login_time']);
+			return $list;
 		}
 		return array ();
 	}
 	
-	public static function getUserInfoById($user_id) {
+	public static function getUserById($user_id) {
 		if (! $user_id || ! is_numeric ( $user_id )) {
 			return false;
 		}
@@ -40,6 +36,7 @@ class User extends Base{
 		$list = $db->select ( self::getTableName(), self::$columns, $condition );
 		
 		if ($list) {
+			$list[0]['login_time']=Common::getDateTime($list[0]['login_time']);
 			return $list [0];
 		}
 		return array ();
@@ -81,6 +78,38 @@ class User extends Base{
 		return array ();
 	}
 	
+	public static function search($user_group ,$user_name, $start ='' ,$page_size='' ) {
+		$db=self::__instance();
+		$limit ="";
+		$where = "";
+		if($page_size){
+			$limit =" limit $start,$page_size ";
+		}
+		if($user_group >0  && $user_name!=""){
+			$where = " where u.user_group=$user_group and u.user_name like '%$user_name%'";
+		}else{
+			if($user_group>0){
+				$where = " where u.user_group=$user_group ";
+			}
+			if($user_name!=""){
+				$where = " where u.user_name like '%$user_name%' ";
+			}
+		}
+		$sql = "select * ,coalesce(g.group_name,'已删除') from ".self::getTableName()." u left join ".UserGroup::getTableName()." g on u.user_group = g.group_id $where order by u.user_id desc $limit";
+		
+		$list=$db->query($sql)->fetchAll();
+		if(!empty($list)){
+			foreach($list as &$item){
+				
+				$item['login_time']=Common::getDateTime($item['login_time']);
+			}
+		}
+		if ($list) {
+			return $list;
+		}
+		return array ();
+	}
+	
 	public static function getUsersByGroup( $group_id ) {
 		$db=self::__instance();
 		$condition = array("AND" => 
@@ -88,8 +117,14 @@ class User extends Base{
 						)
 					);
 		$list = $db->select( self::getTableName(), self::$columns, $condition );
-		//var_dump($db->last_query());exit;
 		if ($list) {
+			foreach($list as &$item){
+				if($item['login_time']==null){
+					;
+				}else{
+					$item['login_time']=Common::getDateTime($item['login_time']);
+				}
+			}
 			return $list;
 		}
 		return array ();
@@ -99,7 +134,6 @@ class User extends Base{
 		$user_info = UserSession::getSessionInfo ();
 		if (empty ( $user_info )) {
 			Common::jumpUrl("login.php");
-			//Common::exitWithMessage ('请先登录', '需要登录才能操作', '登入' , 'login.php' );
 			return true;
 		}
 	}
@@ -113,7 +147,6 @@ class User extends Base{
 		$role_menu_url = MenuUrl::getMenuByRole ( $user_info['user_role']);
 		
 		$search_result = in_array ( $action_url, $role_menu_url );
-		// var_dump($role_menu_url); 
 		if (! $search_result) {
 			Common::exitWithMessage ('您当前没有权限访问该功能，如需访问请联系管理员开通权限','index.php' );
 			return true;
@@ -139,7 +172,7 @@ class User extends Base{
 		}
 	}
 	
-	public static function updateUserInfo($user_id,$user_data) {
+	public static function updateUser($user_id,$user_data) {
 		
 		if (! $user_data || ! is_array ( $user_data )) {
 			return false;
@@ -148,7 +181,6 @@ class User extends Base{
 		$condition=array("user_id"=>$user_id);
 		
 		$id = $db->update ( self::getTableName(), $user_data, $condition );
-		//var_dump($db->last_query());exit; 
 		return $id;
 	}
 	
@@ -190,29 +222,53 @@ class User extends Base{
 		return $result;
 	}
 	
+	public static function delUserByUserName($user_name) {
+		if (! $user_name ) {
+			return false;
+		}
+		$db=self::__instance();
+		$condition = array("user_name"=>$user_name);
+		$result = $db->delete ( self::getTableName(), $condition );
+		return $result;
+	}
+	
 	public static function count($condition = '') {
 		$db=self::__instance();
 		$num = $db->count ( self::getTableName(), $condition );
 		return $num;
 	}
 	
+	public static function countSearch($user_group,$user_name) {
+		$db=self::__instance();
+		$condition = array();
+		if($user_group >0  && $user_name!=""){
+			$condition['user_group']=$user_group;
+			$condition['LIKE']=array("user_name"=>$user_name);
+		}else{
+			if($user_group>0){
+				$condition['user_group']=$user_group;
+			}
+			if($user_name!=""){
+				$condition['LIKE']=array("user_name"=>$user_name);
+			}
+		}
+		$num = $db->count( self::getTableName(), $condition);
+		return $num;
+	}
+	
 	public static function setTemplate($user_id,$template){
 		$user_data=array("template"=>$template);
-		$ret=self::updateUserInfo($user_id,$user_data);
+		$ret=self::updateUser($user_id,$user_data);
 		return $ret;
 	}
 	
 	public static function loginDoSomething($user_id){
-
 		
-		$user_info = User::getUserInfoById($user_id);
-
+		$user_info = User::getUserById($user_id);
 		if($user_info['status']!=1){
 			Common::jumpUrl("login.php");
 			return;
 		}
-		
-		
 		
 		//读取该用户所属用户组将该组的权限保存在$_SESSION中
 		$user_group = UserGroup::getGroupById($user_info['user_group']);
@@ -225,17 +281,12 @@ class User extends Base{
 			$user_info['setting']=1;
 		}
 		
-		$login_time = mktime(); //Common::getDateTime ();
+		$login_time = time();
 		$login_ip = Common::getIp ();
 		$update_data = array ('login_ip' => $login_ip, 'login_time' => $login_time );
-		User::updateUserInfo ( $user_info['user_id'], $update_data );
+		User::updateUser ( $user_info['user_id'], $update_data );
 		$user_info['login_ip']=$login_ip;
 		$user_info['login_time']=Common::getDateTime($login_time);
-		
-		
 		UserSession::setSessionInfo( $user_info);
-		//END
-		
-		
 	}
 }

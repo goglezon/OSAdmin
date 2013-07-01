@@ -14,7 +14,7 @@
 		  <div class="tab-pane active in" id="home">
 
            <form id="tab" method="post" action="">
-				 <table class="table">
+				 <table class="table table-striped">
               <thead>
                 <tr>
 					<th><input type="checkbox" id="checkAll" >全选</th>
@@ -31,11 +31,9 @@
               </thead>
               <tbody>							  
                 <{foreach name=user from=$user_infos item=user_info}>
-					<{if $smarty.foreach.user.index % 2  == 0}>
+					 
 					<tr>
-					<{else}>
-					<tr class="odd">
-					<{/if}>
+					 
 					
 					<td><input type="checkbox" name="user_ids[]" value="<{$user_info.user_id}>" <{if $user_info.user_id == 1}>disabled<{/if}>></td>
 					<td><{$user_info.user_id}></td>

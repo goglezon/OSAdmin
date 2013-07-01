@@ -23,9 +23,7 @@ class QuickNote extends Base {
 		if ($list) {
 			return $list;
 		}
-		return array ();
-		
-		
+		return array ();		
 	}
 	
 	public static function addNote($note_data) {
@@ -34,7 +32,6 @@ class QuickNote extends Base {
 		}
 		$db=self::__instance();
 		$id = $db->insert ( self::getTableName(), $note_data );
-		//var_dump($db->last_query());
 		return $id;
 	}
 

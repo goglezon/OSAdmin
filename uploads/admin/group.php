@@ -5,10 +5,18 @@ extract ( $_REQUEST, EXTR_IF_EXISTS );
 
 Common::checkParam($group_id);
 
+$group = UserGroup::getGroupById ( $group_id );
+if(empty($group)){
+	Common::exitWithError(ErrorMessage::GROUP_NOT_EXIST,"admin/groups.php");
+}
+
 if (Common::isPost()) {
 	if( empty($user_ids) || empty($user_group)){
 		OSAdmin::alert("error",ErrorMessage::NEED_PARAM);
 	}else{
+		if(in_array(1,$user_ids)){
+			Common::exitWithError ('不可更改初始管理员的账号组','admin/groups.php');
+		}
 		$user_ids=implode(',',$user_ids);
 		$update_data = array ('user_group' => $user_group);
 		$result = User::batchUpdateUsers ($user_ids,$update_data );
@@ -23,7 +31,6 @@ if (Common::isPost()) {
 	}
 }
 
-$group = UserGroup::getGroupById ( $group_id );
 $user_infos = User::getUsersByGroup($group_id);
 $groupOptions=UserGroup::getGroupForOptions();
 

@@ -14,7 +14,7 @@
 		  <div class="tab-pane active in" id="home">
 
            <form id="tab" method="post" action="">
-				 <table class="table">
+				 <table class="table table-striped">
               <thead>
                 <tr>
 					<th><input type="checkbox" id="checkAll" >全选</th>
@@ -30,12 +30,16 @@
               </thead>
               <tbody>							  
                 <{foreach name=menu from=$menus item=menu}>
-					<{if $smarty.foreach.menu.index % 2  == 0}>
+					 
 					<tr>
-					<{else}>
-					<tr class="odd">
-					<{/if}>
-					<td><input type="checkbox" name="menu_ids[]" value="<{$menu.menu_id}>" ></td>
+					 
+					<td>
+					<{ if $menu.menu_id <=100 }>
+					<input type="checkbox" name="menu_ids[]" value="<{$menu.menu_id}>" disabled>
+					<{ else }>
+					<input type="checkbox" name="menu_ids[]" value="<{$menu.menu_id}>" >
+					<{ /if }>
+					</td>
 					<td><{$menu.menu_id}></td>
 					<td><{$menu.menu_name}></td>
 					<td><{$menu.menu_url}></td>
@@ -65,18 +69,17 @@
 				<{/foreach}>
               </tbody>
             </table> 
-		
+			<{ if $module_id > 1 }>
 			<label>选择菜单模块</label>
 				<{html_options name=module id="DropDownTimezone" class="input-xlarge" options=$module_options_list selected=0 }>
 				<div class="btn-toolbar">
 					<button type="submit" class="btn btn-primary"><strong>修改菜单模块</strong></button>
 				</div>
+			<{ /if }>
 			</form>
         </div>
     </div>
-	
-<!---操作的确认层，相当于javascript:confirm函数--->
-<{$osadmin_action_confirm}>
+</div>
 
 <script type="text/javascript">
 $("#checkAll").click(function(){

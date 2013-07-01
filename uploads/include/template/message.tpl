@@ -1,5 +1,5 @@
 <{ include file="simple_header.tpl"}>
-  <body>
+  <body class="simple_body">
 
     <div class="navbar">
         <div class="navbar-inner">
@@ -8,7 +8,8 @@
                 <a class="brand" href="<{$smarty.const.ADMIN_URL}>/index.php"><span class="first"></span> <span class="second"><{$smarty.const.COMPANY_NAME}></span></a>
         </div>
     </div>
-   <div class="container-fluid">
+<div>
+<div class="container-fluid">	
         <div class="row-fluid">
 			<div class="http-error">
 				

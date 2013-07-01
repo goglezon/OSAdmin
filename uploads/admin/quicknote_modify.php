@@ -3,9 +3,14 @@ require ('../include/init.inc.php');
 $note_id = $note_content ='';
 extract ( $_REQUEST, EXTR_IF_EXISTS );
 Common::checkParam($note_id);
-$note_content = Common::filterText($note_content);
+
+$quicknote = QuickNote::getNoteById ( $note_id );
+if(empty($quicknote)){
+	Common::exitWithError(ErrorMessage::QUICKNOTE_NOT_EXIST,"admin/quicknotes.php");
+}
 
 if (Common::isPost ()) {
+	$note_content = Common::filterText($note_content);
 	if($note_content =="" ){
 		OSAdmin::alert("error",ErrorMessage::NEED_PARAM);
 	}else{
@@ -13,6 +18,7 @@ if (Common::isPost ()) {
 		$user_group = $current_user_info['user_group'];
 		$current_user_id = $current_user_info['user_id'];
 		if($user_group ==1 || $note['owner_id'] == $current_user_id){
+			$note_content = htmlspecialchars($note_content);
 			$update_data = array ('note_content' => $note_content);
 			$result = QuickNote::updateNote( $note_id,$update_data );
 			
@@ -27,8 +33,6 @@ if (Common::isPost ()) {
 		}
 	}
 }
-
-$quicknote = QuickNote::getNoteById ( $note_id );
 
 Template::assign ( 'quicknote', $quicknote );
 Template::display ( 'admin/quicknote_modify.tpl' );

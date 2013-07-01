@@ -25,8 +25,5 @@
 		  </div>
   </div>
 </div>
-
-<!---操作的确认层，相当于javascript:confirm函数--->
-<{$osadmin_action_confirm}>
 </div>
 <{ include file="footer.tpl" }>

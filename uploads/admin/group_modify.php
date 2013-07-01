@@ -5,6 +5,11 @@ extract ( $_REQUEST, EXTR_IF_EXISTS );
  
 Common::checkParam($group_id);
 
+$group = UserGroup::getGroupById ( $group_id );
+if(empty($group)){
+	Common::exitWithError(ErrorMessage::GROUP_NOT_EXIST,"admin/groups.php");
+}
+
 if (Common::isPost ()) {
 	
 	if($group_name =="" ){
@@ -23,8 +28,6 @@ if (Common::isPost ()) {
 		}
 	}
 }
-
-$group = UserGroup::getGroupById ( $group_id );
 
 $groupOptions=UserGroup::getGroupForOptions();
 

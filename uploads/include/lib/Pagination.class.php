@@ -50,11 +50,12 @@ class Pagination{
 		}
 		
 		if ($page_no < $total_page){
-			$navibar .= "<li><a href=\"$url?$params&page_no=$total_page\">末页</a></li>\n <li><a href=\"$url?$params&page_no=".($page_no+1)."\">下一页</a></li>\n";
+			$navibar .= "<li><a href=\"$url?$params&page_no=".($page_no+1)."\">下一页</a></li>\n <li><a href=\"$url?$params&page_no=$total_page\">末页</a></li>\n ";
 		}
 		if($total_page>0){
 			$navibar.="<li><a>".$page_no ."/". $total_page."</a></li>";
 		}
+		$navibar.="<li><a>共".$row_count."条</a></li>";
 		$jump ="";
 		//$jump ="<li><form action='$url' method='GET' name='jumpForm'><input type='text' name='page_no' value='$page_no'></form></li>";
 		

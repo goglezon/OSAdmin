@@ -28,8 +28,8 @@
         <a href="#page-stats" class="block-heading" data-toggle="collapse">当前用户信息</a>
         <div id="page-stats" class="block-body collapse in">
 			
-               <table class="table">  
-						    <tbody>
+               <table class="table table-striped">  
+						     
 							 <tr>
 						        <td>用户名</td>
 						        <td>真实姓名</td>
@@ -46,7 +46,7 @@
 						        <td><{$user_info.login_time}></td>
 						        <td><{$user_info.login_ip}></td>
 					          </tr>
-					        </tbody>
+					        
 					      </table>
 		</div>
 		<div class="alert alert-success">

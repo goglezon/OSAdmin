@@ -31,21 +31,31 @@
 }
 body {
   background: #eee;
-  background-image: url(../images/furley_bg.png);
+  background-image: url(../images/furley_bg1.png);
   background-position: initial initial;
   background-repeat: initial initial;
   margin: 0px;
   padding: 0px;
 }
+.simple_body {
+  background: #eee;
+  background: url(../images/furley_bg1.png) ;
+  background-position: initial initial;
+  background-repeat: initial initial;
+  margin: 0px;
+  padding: 0px;
+}
+
 .content {
   min-width: 400px;
   position: relative;
-  min-height: 800px;
+  min-height: 580px;
   margin-left: 260px;
   #border-left: 1px solid #cccccc;
   #border-left: 3px solid #999999;
   #padding-left: 10px;
 }
+
 .page-title{
 	padding-right:20px;
 }
@@ -734,40 +744,6 @@ table.table tr:hover, table.normal tr:hover {
 }
 
 table.table thead tr:hover, table.normal thead tr:hover {
- color:#fff;
-}
-/* for add function */
-table.add.list tr:first-child td {
-  border-top: 0px;
-}
-table.add, table.normal {
-	 border:1px solid #f0f0f0;
-}
-
-table.add thead, table.normal thead {
- background:#6BA08B;
- color:#fff;
-}
-
-table.add thead tr, table.normal thead tr {
- color:#fff;
-}
-
-table.add tr, table.normal tr {
- color:#999;
- text-align:right;
-}
-
-table.add tr.odd, table.normal tr.odd {
- background:#f9f9f9;
- color:#888;
-}
-
-table.add tr:hover, table.normal tr:hover {
- color:#333;
-}
-
-table.add thead tr:hover, table.normal thead tr:hover {
  color:#fff;
 }
 

@@ -5,27 +5,45 @@ extract ( $_REQUEST, EXTR_IF_EXISTS );
 
 Common::checkParam($menu_id);
 
+$menu = MenuUrl::getMenuById ( $menu_id );
+if(empty($menu)){
+	Common::exitWithError(ErrorMessage::MENU_NOT_EXIST,"admin/menus.php");
+}
+
 if (Common::isPost ()) {
 	
-	if($menu_name == "" || $menu_url =="" || $module_id ==""){
-		OSAdmin::alert("error",ErrorMessage::NEED_PARAM);
+	if($menu_name == "" || $menu_url =="" || ($menu_id>100 && empty($module_id)) ){
+		
+			OSAdmin::alert("error",ErrorMessage::NEED_PARAM);
+		
 	}else{
-		$update_data = array ('menu_name' => $menu_name, 'menu_url' => $menu_url, 'module_id' => $module_id, 
-							'is_show' => $is_show, "online" => $online,'menu_desc' => $menu_desc, 'shortcut_allowed' => $shortcut_allowed,
-							'father_menu' => $father_menu);
-		
-		$result = MenuUrl::updateMenuInfo ( $menu_id,$update_data );
-		
-		if ($result>=0) {
-			SysLog::addLog ( UserSession::getUserName(), 'MODIFY', 'MenuUrl' ,$menu_id, json_encode($update_data) );
-			Common::exitWithSuccess ('更新完成','admin/menus.php');
-		} else {
-			OSAdmin::alert("error");
+		$exist = false;
+		$menu_exist = MenuUrl::getMenuByUrl($menu_url);
+		if(!empty($menu_exist)){
+			if($menu_id!=$menu_exist['menu_id']){
+				$exist=true;
+				OSAdmin::alert("error",ErrorMessage::MENU_URL_CONFLICT);
+			}
+		}
+		if(!$exist){
+			$update_data = array ('menu_name' => $menu_name, 'menu_url' => $menu_url,  
+								'is_show' => $is_show, "online" => $online,'menu_desc' => $menu_desc, 'shortcut_allowed' => $shortcut_allowed,
+								'father_menu' => $father_menu);
+			if($menu_id > 100){
+				$update_data['module_id'] = $module_id;
+			}
+			
+			$result = MenuUrl::updateMenuInfo ( $menu_id,$update_data );
+			
+			if ($result>=0) {
+				SysLog::addLog ( UserSession::getUserName(), 'MODIFY', 'MenuUrl' ,$menu_id, json_encode($update_data) );
+				Common::exitWithSuccess ('更新完成','admin/menus.php');
+			} else {
+				OSAdmin::alert("error");
+			}
 		}
 	}
 }
-
-$menu = MenuUrl::getMenuById ( $menu_id );
 
 $module_options_list = Module::getModuleForOptions ();
 $father_menu_options_list = MenuUrl::getFatherMenuForOptions ();

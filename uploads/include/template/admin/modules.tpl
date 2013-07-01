@@ -11,7 +11,7 @@
 <div class="block">
 	<a href="#page-stats" class="block-heading" data-toggle="collapse">模块列表</a>
 	<div id="page-stats" class="block-body collapse in">
-		<table class="table">
+		<table class="table table-striped">
 			<thead>
 			<tr>
 				<th>#</th>
@@ -25,11 +25,9 @@
 			</thead>
 			<tbody>							  
 			<{foreach name=module from=$modules item=module}>
-				<{if $smarty.foreach.module.index % 2  == 0}>
+				 
 				<tr>
-				<{else}>
-				<tr class="odd">
-				<{/if}>
+				 
 				<td><{$module.module_id}></td>
 				<td><{$module.module_name}></td>
 				<td><{$module.module_url}></td>
@@ -47,7 +45,9 @@
 				&nbsp;
 				<a href="module_modify.php?module_id=<{$module.module_id}>" title= "修改" ><i class="icon-pencil"></i></a>
 				&nbsp;
+				<{ if $module.module_id != 1 }>
 				<a data-toggle="modal" href="#myModal"  title= "删除" ><i class="icon-remove" href="modules.php?method=del&module_id=<{$module.module_id}>"></i></a>
+				<{ /if}>
 				</td>
 				</tr>
 			<{/foreach}>

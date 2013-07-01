@@ -9,12 +9,12 @@ if (Common::isPost ()) {
 		
 		OSAdmin::alert("error",ErrorMessage::NEED_PARAM);
 	}else{
+		$note_content = htmlspecialchars($note_content);
 		$input_data = array ('note_content' => $note_content, 'owner_id' => UserSession::getUserId() );
 		$note_id = QuickNote::addNote ( $input_data );
 		
 		if ($note_id) {
 			SysLog::addLog ( UserSession::getUserName(), 'ADD', 'QuickNote' ,$note_id, json_encode($input_data) );
-			//OSAdmin::alert("success");
 			Common::exitWithSuccess ('便签添加成功','admin/quicknote_add.php');
 		}
 	}

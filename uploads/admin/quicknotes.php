@@ -25,7 +25,6 @@ if ($method == 'del' && ! empty ( $note_id )) {
 		$result = QuickNote::delNote ( $note_id );
 		if ($result>0) {
 			SysLog::addLog ( UserSession::getUserName(), 'DELETE', 'QuickNote',$note_id, json_encode($note) );
-			//OSAdmin::alert("success");
 			Common::exitWithSuccess ('便签删除成功','admin/quicknotes.php');
 		}else{
 			OSAdmin::alert("error");
@@ -37,7 +36,7 @@ if ($method == 'del' && ! empty ( $note_id )) {
 
 $quicknotes = QuickNote::getNotes($start,$page_size);
 
-OSAdmin::renderConfirm("icon-remove");
+$confirm_html = OSAdmin::renderJsConfirm("icon-remove");
 
 $page_html=Pagination::showPager("",$page_no,PAGE_SIZE,$row_count);
 
@@ -46,7 +45,7 @@ Template::assign ( 'page_size', PAGE_SIZE );
 Template::assign ( 'row_count', $row_count );
 Template::assign ( 'page_html', $page_html );
 Template::assign ( 'quicknotes', $quicknotes );
-
+Template::assign ( 'osadmin_action_confirm' , $confirm_html);
 Template::assign ( 'user_group', $user_group );
 Template::assign ( 'current_user_id', $current_user_id );
 Template::display ( 'admin/quicknotes.tpl' );

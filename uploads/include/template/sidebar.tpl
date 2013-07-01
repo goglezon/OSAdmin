@@ -35,7 +35,7 @@
             <li><a href="<{$smarty.const.ADMIN_URL}><{$content_header.module_url}>"> <{$content_header.module_name}> </a> <span class="divider">/</span></li>
            
 			<{ if $content_header.father_menu }>
-			<li><a href="<{$content_header.father_menu_url}>"> <{$content_header.father_menu_name}> </a> <span class="divider">/</span></li>
+			<li><a href="<{$smarty.const.ADMIN_URL}><{$content_header.father_menu_url}>"> <{$content_header.father_menu_name}> </a> <span class="divider">/</span></li>
 			<{ /if}>
 			
 			<li class="active"><{$content_header.menu_name}></li>
@@ -46,7 +46,7 @@
 					<a title= "加入快捷菜单" href="#"><li class="active"><i class="icon-plus" method="add" url="<{$smarty.const.ADMIN_URL}>/ajax/shortcut.php?menu_id=<{$content_header.menu_id}>"></i></li></a>
 				<{ /if }>
 			<{ /if }>
-			</li>
+			
         </ul>
 <div class="container-fluid">
 	<div class="row-fluid">

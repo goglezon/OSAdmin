@@ -13,7 +13,15 @@
 /*Standard Elements*/
 body {
   background: #222;
-  background-image: url('../images/black-Linen.png');
+  background: url('../images/black-Linen2.png') repeat-y;
+  background-position: initial initial;
+  background-repeat: initial initial;
+  margin: 0px;
+  padding: 0px;
+}
+.simple_body {
+  background: #eee;
+  background: url(../images/black-Linen2.png) ;
   background-position: initial initial;
   background-repeat: initial initial;
   margin: 0px;
@@ -38,6 +46,7 @@ hr {
 }
 /*Navbar*/
 .navbar {
+  background: url('../images/black-Linen2.png');
   position: relative;
   z-index: 20;
   margin: 0px;
@@ -89,12 +98,12 @@ hr {
 .content {
   min-width: 400px;
   position: relative;
-  min-height: 800px;
+  min-height: 580px;
   background: #fff;
   margin-left: 240px;
-  margin-top: 6px;
-  border-left: 1px solid #000000;
-  border-left: 1px solid #111;
+  #margin-top: 6px;
+  #border-left: 1px solid #000000;
+  #border-left: 1px solid #111;
 }
 .header {
   background: #ffffff;
@@ -269,7 +278,7 @@ a.block-heading:hover,
 }
 /*Navigation*/
 .sidebar-nav {
-  width: 228px;
+  width: 240px;
   position: absolute;
   float: left;
   
@@ -278,8 +287,8 @@ a.block-heading:hover,
   -webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.9);
   -moz-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.9);
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.9);
-  margin: 6em 6px;
-  margin-top: 6px;
+  #margin: 6em 6px;
+  margin-top: 1px;
 }
 .sidebar-nav form.search {
   padding: .5em 0em;

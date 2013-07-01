@@ -14,15 +14,28 @@ define ( 'TEMPLATE_CONFIGS', ADMIN_BASE . '/config/' );
 define ( 'TEMPLATE_CACHE', ADMIN_BASE . '/cache/' );
 
 //OSAdmin常量
-define ( 'ADMIN_URL' ,'http://yuwenqi.com');
+define ( 'ADMIN_URL' ,'http://demo.osadmin.net');
 define ( 'ADMIN_TITLE' ,'管理后台');
 define ( 'COMPANY_NAME' ,'OSAdmin.org');
 
 //OSAdmin数据库设置
-define ( 'OSA_DB_URL','127.0.0.1:3306');
+define ( 'OSA_DB_ID' ,'osadmin');
+define ( 'OSA_DB_URL','127.0.0.1');
+define ( 'OSA_DB_PORT','3306');
 define ( 'OSA_DB_NAME' ,'osadmin');
 define ( 'OSA_USER_NAME','root');
 define ( 'OSA_PASSWORD','');
+
+//样例数据库设置
+define ( 'SAMPLE_DB_ID' ,'sample');
+define ( 'SAMPLE_DB_URL','127.0.0.1');
+define ( 'SAMPLE_DB_PORT','3306');
+define ( 'SAMPLE_DB_NAME' ,'osadmin');
+define ( 'SAMPLE_USER_NAME','root');
+define ( 'SAMPLE_PASSWORD','');
+
+
+//prefix不要更改，除非修改osadmin.sql文件中的所有表名
 define ( 'OSA_TABLE_PREFIX' ,'osa_');
 
 //页面设置
@@ -30,9 +43,9 @@ define ( 'DEBUG' ,false);
 define ( 'PAGE_SIZE', 25 );
 
 //数据库配置
-$DATABASE_LIST = array (OSA_DB_NAME => array (OSA_DB_URL, OSA_USER_NAME, OSA_PASSWORD, OSA_DB_NAME ),
-						'sample' => array ('127.0.0.1:3306', 'root', '', 'osadmin' ),
-				);
+$DATABASE_LIST[OSA_DB_ID] =array ("server"=>OSA_DB_URL,"port"=>OSA_DB_PORT,"username"=> OSA_USER_NAME, "password"=>OSA_PASSWORD, "db_name"=>OSA_DB_NAME );
+$DATABASE_LIST[SAMPLE_DB_ID] = array ("server"=>SAMPLE_DB_URL,"port"=>SAMPLE_DB_PORT,"username"=> SAMPLE_USER_NAME, "password"=>SAMPLE_PASSWORD, "db_name"=>SAMPLE_DB_NAME );
+
 
 $OSADMIN_COMMAND_FOR_LOG=array(	
 							'SUCCESS'=>'成功',

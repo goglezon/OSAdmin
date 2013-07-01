@@ -5,11 +5,23 @@ extract ( $_REQUEST, EXTR_IF_EXISTS );
 
 Common::checkParam($module_id);
 
+$temp = Module::getModuleById ( $module_id );
+if(empty($temp)){
+	Common::exitWithError(ErrorMessage::MODULE_NOT_EXIST,"admin/modules.php");
+}
+
 if (Common::isPost ()) {
 	
 	if(empty($module) || empty($menu_ids)){
 		OSAdmin::alert("error",ErrorMessage::NEED_PARAM);
 	}else{
+		if($module !=1){
+			foreach ($menu_ids as $menu_id){
+				if($menu_id<=100){
+					Common::exitWithError ('系统菜单不能转移到其它模块','admin/modules.php');
+				}
+			}
+		}
 		$menu_ids=implode(',',$menu_ids);
 		$update_data = array ('module_id' => $module);
 		$result = MenuUrl::batchUpdateMenus ( $menu_ids,$update_data );
@@ -28,4 +40,5 @@ $module_options_list = Module::getModuleForOptions ();
 
 Template::assign ( 'module_options_list', $module_options_list );
 Template::assign ( 'menus', $menus );
+Template::assign ( 'module_id', $module_id );
 Template::display ( 'admin/module.tpl' );

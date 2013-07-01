@@ -15,9 +15,9 @@
 		  <div class="tab-pane active in" id="home">
 
            <form id="tab" method="post" action="">
-				<label><span class="label label-info">可输入HTML代码</span></label>
+				<label><span class="label label-info">不支持HTML代码</span></label>
 
-				<textarea name="note_content" rows="3" class="input-xlarge"><{$_POST.note_content}></textarea>
+				<textarea name="note_content" rows="3" class="input-xlarge" autofocus="true"><{$_POST.note_content}></textarea>
 				
 				<div class="btn-toolbar">
 					<button type="submit" class="btn btn-primary"><strong>提交</strong></button>
@@ -25,7 +25,6 @@
 			</form>
         </div>
     </div>
-
 </div>	
 <!-- END 以下内容不需更改，请保证该TPL页内的标签匹配即可 -->
 <{ include file="footer.tpl" }>

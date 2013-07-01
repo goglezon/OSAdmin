@@ -16,9 +16,9 @@
 
            <form id="tab" method="post" action="">
 				<label>名称</label>
-				<input type="text" name="menu_name" value="<{$_POST.menu_name}>" class="input-xlarge" >
-				<label>链接</label>
-				<input type="text" name="menu_url" value="<{$_POST.menu_url}>" class="input-xlarge" >
+				<input type="text" name="menu_name" value="<{$_POST.menu_name}>" class="input-xlarge" required="true" autofocus="true">
+				<label>链接 <span class="label label-important">不可重复</span></label>
+				<input type="text" name="menu_url" value="<{$_POST.menu_url}>" class="input-xlarge" required="true" >
 				<label>所属模块</label>
 				<{html_options name=module_id id="DropDownTimezone" class="input-xlarge" options=$module_options_list selected=0}>
 				<label>是否左侧菜单栏显示</label>
@@ -44,11 +44,6 @@
 			</form>
         </div>
     </div>
-
-<!---操作的确认层，相当于javascript:confirm函数--->
-<{$osadmin_action_confirm}>
-
-</div>	
-
+</div>
 <!-- END 以下内容不需更改，请保证该TPL页内的标签匹配即可 -->
 <{ include file="footer.tpl" }>

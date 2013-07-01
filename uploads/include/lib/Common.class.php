@@ -1,18 +1,30 @@
 <?php
 if(!defined('ACCESS')) {exit('Access denied.');}
 class Common {
+
+	//获取OSAdmin的action_url，用于权限验证
 	public static function getActionUrl(){
 		$action_script=$_SERVER['SCRIPT_NAME'];
+		$admin_url = strtolower(ADMIN_URL);
+		if($admin_url{strlen($admin_url)-1}=="/"){
+			$admin_url = substr($admin_url,0,strlen($admin_url)-1);
+		}
+	
+		$http_pos = strpos($admin_url,'http://');
 		
-		$dot=strpos(ADMIN_URL,'.');
-		$slash=strpos(ADMIN_URL,'/',$dot+1);
-		if($slash){
-			$sub_dir = substr(ADMIN_URL,$slash);
-			
-			$action_url=substr($action_script,strpos($action_script,$sub_dir)+strlen($sub_dir));
-			
+		if($http_pos !== false){
+			$admin_url_no_http = substr($admin_url,7);			
 		}else{
-			$action_url = $action_script;
+			$admin_url_no_http=$admin_url;
+		}
+		$slash = 0;
+		$slash=strpos($admin_url_no_http,'/');
+		
+		if($slash){
+			$sub_dir = substr($admin_url_no_http,$slash);
+			$action_url = substr($action_script,strlen($sub_dir));
+		}else{
+			$action_url =$action_script;
 		}
 		return $action_url;
 	}
@@ -29,18 +41,19 @@ class Common {
 				$page_title="嗯!";
 				break;
 		}
-		
-		if($forward_url{0} !=="/"){
+		$temp = explode('?',$forward_url);
+		$file_url = $temp[0];
+		if($file_url{0} !=="/"){
+			$file_url ='/'.$file_url;
 			$forward_url ='/'.$forward_url;
 		}
-		
-		$menu = MenuUrl::getMenuByUrl($forward_url);
+		$menu = MenuUrl::getMenuByUrl($file_url);
 		$forward_title = "首页";
 		if(sizeof($menu)>0){
 			$forward_title = $menu['menu_name'];
 		}
 		if ($forward_url) {
-			$message_detail = "$message_detail <script>1setTimeout(\"window.location.href ='".ADMIN_URL."$forward_url';\", " . ($second * 1000) . ");</script>";
+			$message_detail = "$message_detail <script>setTimeout(\"window.location.href ='".ADMIN_URL."$forward_url';\", " . ($second * 1000) . ");</script>";
 		}
 		Template::assign ( 'type', $type );
 		Template::assign ( 'page_title', $page_title );
@@ -62,7 +75,9 @@ class Common {
 	public static function checkParam($param,$to_url=null){
 		
 		if($to_url == null ){
-			$referer = $_SERVER['HTTP_REFERER'];
+			if(array_key_exists('HTTP_REFERER',$_SERVER)){
+				$referer = $_SERVER['HTTP_REFERER'];
+			}
 			if(!empty($referer)){
 				$start = strpos($referer,ADMIN_URL);
 				$to_url = substr($referer,$start+strlen(ADMIN_URL));
@@ -125,7 +140,7 @@ class Common {
 		$sys_info_array ['diskfree'] = intval ( diskfreespace ( "." ) / (1024 * 1024) ) . 'Mb';
 		$sys_info_array ['current_user'] = @get_current_user ();
 		$sys_info_array ['timezone'] = date_default_timezone_get();
-		$db=new Medoo(OSA_DB_NAME);
+		$db=new Medoo(OSA_DB_ID);
 		$mysql_version = $db->query("select version()")->fetchAll();
 		$sys_info_array ['mysql_version'] = $mysql_version[0]['version()'];
 		return $sys_info_array;

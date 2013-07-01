@@ -16,7 +16,7 @@
 
            <form id="tab" method="post" action="">
 				<label>账号组名称</label>
-				<input type="text" name="group_name" value="<{$_POST.group_name}>" class="input-xlarge" >
+				<input type="text" name="group_name" value="<{$_POST.group_name}>" class="input-xlarge" required="true" autofocus="true" >
 				<label>描述</label>
 				<textarea name="group_desc" rows="3" class="input-xlarge"><{$_POST.group_desc}></textarea>
 				<div class="btn-toolbar">
@@ -25,10 +25,7 @@
 			</form>
         </div>
     </div>
-
-<!---操作的确认层，相当于javascript:confirm函数--->
-<{$osadmin_action_confirm}>
-
-</div>	
+</div>
+	
 <!-- END 以下内容不需更改，请保证该TPL页内的标签匹配即可 -->
 <{ include file="footer.tpl" }>

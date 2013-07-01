@@ -9,11 +9,10 @@ class SysLog extends Base{
 	}
 	
 	public static function addLog($user_name, $action, $class_name , $class_obj ,$result = "") {
-		$now_time=mktime();
+		$now_time=time();
 		$insert_data = array ('user_name' => $user_name, 'action' => $action, 'class_name' => $class_name ,'class_obj' => $class_obj , 'result' => $result ,'op_time' => $now_time);
 		$db=self::__instance();
 		$id = $db->insert ( self::getTableName(), $insert_data );
-		//var_dump($db->last_query());exit;
 		return $id;
 	}
 	
@@ -46,7 +45,7 @@ class SysLog extends Base{
 				$item['op_time']=Common::getDateTime($item['op_time']);
 			}
 		}
-		//var_dump($db->last_query());
+
 		if ($list) {
 			return $list;
 		}
@@ -87,7 +86,6 @@ class SysLog extends Base{
 		$condition["AND"] = $sub_condition;
 		
 		$num = $db->count ( self::getTableName(),$condition );
-		//var_dump($db->last_query());
 		return $num;
 	}
 }

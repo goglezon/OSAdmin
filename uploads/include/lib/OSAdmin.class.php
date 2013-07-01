@@ -25,8 +25,8 @@ class OSAdmin extends Base {
 		Template::assign("osadmin_action_alert",$alert_html);
 	}
 	
-	public static function renderConfirm($class,$confirm_title="确定要这样做吗？"){
-		$confirm_html="<script type=\"text/javascript\">";
+	public static function renderJsConfirm($class,$confirm_title="确定要这样做吗？"){
+		$confirm_html="<script>";
 		if(!is_array($class)){
 			$class=explode(',',$class);
 		}
@@ -47,8 +47,21 @@ class OSAdmin extends Base {
 				";
 		}
 	
-		$confirm_html.="</script>";	
-		Template::assign("osadmin_action_confirm",$confirm_html);
+		$confirm_html.="</script>
+
+";	
+		return $confirm_html;
+	}
+	
+	public static function checkNoNeedLogin($action_url,$no_need_login_array){
+		$last_slash_pos = strrpos($action_url,'/');
+		$action_dir = substr($action_url,0,$last_slash_pos+1);
+		
+		if(in_array($action_url,$no_need_login_array) || in_array($action_dir,$no_need_login_array)){
+			return true;
+		}else{
+			return false;
+		}
 	}
 	
 	public static function _restore_db_($sql_file){

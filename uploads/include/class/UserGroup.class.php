@@ -5,8 +5,7 @@ class UserGroup extends Base {
 	private static $table_name = 'user_group';
 	// 查询字段
 	private static $columns = 'group_id, group_name, group_role, owner_id , group_desc';
-	//状态定义
-	
+
 	public static function getTableName(){
 		return parent::$table_prefix.self::$table_name;
 	}
@@ -29,7 +28,6 @@ class UserGroup extends Base {
 		}
 		$db=self::__instance();
 		$id = $db->insert ( self::getTableName(), $group_data );
-		//var_dump($db->last_query());
 		return $id;
 	}
 
@@ -81,7 +79,6 @@ class UserGroup extends Base {
 	}
 	
 	public static function getGroupForOptions() {
-		//$group_options_array = array (0 => "-----分组-----");
 		$group_list = self::getAllGroup ();
 		
 		foreach ( $group_list as $group ) {
@@ -100,19 +97,4 @@ class UserGroup extends Base {
 		}
 		return array ();
 	}
-	/*
-	public static function getNamesForLog(){
-		$db=self::__instance();
-		$condition=array();
-		$list = $db->select ( self::getTableName(),"group_id, group_name");
-		foreach($list as $item){
-			$ret[get_class().'='.$item['group_id']]=$item['group_name'];
-		}
-		if ($ret) {
-			return $ret;
-		}else{
-			return array();
-		}
-	}
-	*/
 }

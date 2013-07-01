@@ -9,7 +9,7 @@ if(!in_array($t,$templates)){
 	$t="default";
 }
 $ret=User::setTemplate(UserSession::getUserId(),$t);
-//SysLog::addLog ( UserSession::getUserName(), 'MODIFY', 'User' ,$current_user_id, json_encode($t) );
+
 $_SESSION['user_info']['template']=$t;
 $rand=rand(0,10000);
 $back_url=$_SERVER['HTTP_REFERER']."#".$rand;

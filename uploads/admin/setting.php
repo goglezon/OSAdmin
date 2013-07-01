@@ -2,14 +2,14 @@
 require ('../include/init.inc.php');
 $new_timezone = '';
 extract ( $_POST, EXTR_IF_EXISTS );
-//var_dump($new_timezone);
+
 $current_user_id=UserSession::getUserId();
 $timezone = System::get('timezone');
 
 if (Common::isPost()) {
 	System::set('timezone',$new_timezone);
+	$_SESSION['timezone']=$new_timezone;
 	Common::exitWithSuccess ('时区设置成功','/index.php');
-	//SysLog::addLog ( UserSession::getUserName(), 'MODIFY', 'User' ,$current_user_id, json_encode($user_data) );
 	 
 }
 

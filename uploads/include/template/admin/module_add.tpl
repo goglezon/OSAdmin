@@ -16,9 +16,9 @@
 
            <form id="tab" method="post" action="">
 				<label>模块名称</label>
-				<input type="text" name="module_name" value="<{$_POST.module_name}>" class="input-xlarge" >
+				<input type="text" name="module_name" value="<{$_POST.module_name}>" class="input-xlarge" required="true" autofocus="true" >
 				<label>模块链接</label>
-				<input type="text" name="module_url" value="<{if $_POST.module_url=="" }>/index.php<{else}><{$_POST.module_url}><{/if}>" class="input-xlarge" >
+				<input type="text" name="module_url" value="<{if $_POST.module_url=="" }>/index.php<{else}><{$_POST.module_url}><{/if}>" class="input-xlarge" required="true">
 				<label>模块排序数字(数字越小越靠前)</label>
 				<input type="text" name="module_sort" value="<{$_POST.module_sort}>" class="input-xlarge" >
 				<label>描述</label>
@@ -29,11 +29,7 @@
 			</form>
         </div>
     </div>
-
-<!---操作的确认层，相当于javascript:confirm函数--->
-<{$osadmin_action_confirm}>
-
-</div>	
+</div>
 
 <!-- END 以下内容不需更改，请保证该TPL页内的标签匹配即可 -->
 <{ include file="footer.tpl" }>

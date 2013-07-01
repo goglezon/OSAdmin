@@ -7,7 +7,7 @@ class GroupRole {
 		$data = Module::getAllModules (1);
 		//用户组的权限
 		foreach ( $data as $k => $module ) {
-			$list = MenuUrl::getListByModuleId ($module ['module_id'] ,"All");
+			$list = MenuUrl::getListByModuleId ($module ['module_id'] ,"role");
 			foreach ( $list as $menu ) {
 				$data [$k] ['menu_info'][$menu ['menu_id']] = $menu ['menu_name'];
 			}

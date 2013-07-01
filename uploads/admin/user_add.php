@@ -4,7 +4,7 @@ $user_name = $real_name = $mobile = $password  = $email = $user_desc = $user_gro
 extract ( $_POST, EXTR_IF_EXISTS );
 
 if (Common::isPost ()) {
-	$exist = User::getUserInfoByName($user_name);
+	$exist = User::getUserByName($user_name);
 	if($exist){
 		
 		OSAdmin::alert("error",ErrorMessage::NAME_CONFLICT);
@@ -18,8 +18,9 @@ if (Common::isPost ()) {
 		if ($user_id) {
 			$input_data['password']="";
 			SysLog::addLog ( UserSession::getUserName(), 'ADD', 'User' ,$user_id, json_encode($input_data) );
-			//OSAdmin::alert("success");
 			Common::exitWithSuccess ('账号添加成功','admin/users.php');
+		}else{
+			OSAdmin::alert("error");
 		}
 	}
 }

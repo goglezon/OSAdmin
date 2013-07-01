@@ -11,7 +11,7 @@
 <div class="block">
 	<a href="#page-stats" class="block-heading" data-toggle="collapse">账号组列表</a>
 	<div id="page-stats" class="block-body collapse in">
-		<table class="table">
+		<table class="table table-striped">
 			<thead>
 			<tr>
 				<th>#</th>
@@ -23,11 +23,9 @@
 			</thead>
 			<tbody>							  
 			<{foreach name=group from=$groups item=group}>
-				<{if $smarty.foreach.group.index % 2  == 0}>
+				 
 				<tr>
-				<{else}>
-				<tr class="odd">
-				<{/if}>
+ 
 				<td><{$group.group_id}></td>
 				<td><{$group.group_name}></td>
 				<td><{$group.owner_name}></td>
@@ -37,7 +35,10 @@
 				&nbsp;
 				<a href="group_modify.php?group_id=<{$group.group_id}>" title= "修改" ><i class="icon-pencil"></i></a>
 				&nbsp;
+				
+				<{ if $group.group_id != 1 }>
 				<a data-toggle="modal" href="#myModal"  title= "删除" ><i class="icon-remove" href="groups.php?method=del&group_id=<{$group.group_id}>#myModal" data-toggle="modal" ></i></a>
+				<{ /if }>
 				</td>
 				</tr>
 			<{/foreach}>
