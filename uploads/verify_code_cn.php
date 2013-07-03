@@ -9,15 +9,15 @@ $chinese= array();
 //$chinese = array("人","出","来","友","学","孝","仁","义","礼","廉","忠","国","中","易","白","者","火 ","土","金","木","雷","风","龙","虎","天","地", "生","晕","菜","鸟","田","三","百","钱","福","爱","情","兽","虫","鱼","九","网","新","度","哎","唉","啊","哦","仪","老","少","日","月","星","于","文","琦","搜","狐","卓","望"); 
 $chars = array_merge($english,$chinese);
 // 创建颜色 
-$fontcolor = imagecolorallocate($im, 205, 205, 155); 
+$fontcolor = imagecolorallocate($im, 0x6c, 0x6c, 0x6c); 
 //$bg = imagecolorallocate($im, rand(0,85), rand(85,170), rand(170,255)); 
-$bg = imagecolorallocate($im, 0x6C, 0x7A, 0x95); 
+$bg = imagecolorallocate($im, 0xfc, 0xfc, 0xfc); 
 imagefill($im, 0, 0, $bg);
 // 设置文字 
 $text = "";
 for($i=0;$i<6;$i++) $text .= trim($chars[rand(0,count($chars)-1)]); 
 
-$_SESSION['verify_code'] = $text; 
+$_SESSION['osa_verify_code'] = $text; 
 
 $font = 'assets/font/tahoma.ttf'; 
 

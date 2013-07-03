@@ -8,7 +8,7 @@ $timezone = System::get('timezone');
 
 if (Common::isPost()) {
 	System::set('timezone',$new_timezone);
-	$_SESSION['timezone']=$new_timezone;
+	$_SESSION['osa_timezone']=$new_timezone;
 	Common::exitWithSuccess ('时区设置成功','/index.php');
 	 
 }

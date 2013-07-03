@@ -1,49 +1,50 @@
 <?php
 if(!defined('ACCESS')) {exit('Access denied.');}
 class UserSession{
+	const SESSION_NAME="osa_user_info";
 	public static function setSessionInfo($user_info){
-		$_SESSION['user_info'] = $user_info;
+		$_SESSION[self::SESSION_NAME] = $user_info;
 		return true;
 	}
 	
 	public static function getSessionInfo(){
 		$user_info = array();
-		$user_info = $_SESSION['user_info'];
+		$user_info = $_SESSION[self::SESSION_NAME];
 		return $user_info;
 	}
 	
 	public static function getUserName(){
 		$user_name = '';
-		$user_name = $_SESSION['user_info']['user_name'];
+		$user_name = $_SESSION[self::SESSION_NAME]['user_name'];
 		return $user_name;
 	}
 	
 	public static function getUserId(){
 		$admin_id = '';
-		$admin_id = $_SESSION['user_info']['user_id'];
+		$admin_id = $_SESSION[self::SESSION_NAME]['user_id'];
 		return $admin_id;
 	}
 	
 	public static function getRealName(){
 		$real_name = '';
-		$real_name = $_SESSION['user_info']['real_name'];
+		$real_name = $_SESSION[self::SESSION_NAME]['real_name'];
 		return $real_name;
 	}
 	
 	public static function getUserGroup(){
 		$purviews = '';
-		$purviews = $_SESSION['user_info']['user_group'];
+		$purviews = $_SESSION[self::SESSION_NAME]['user_group'];
 		return $purviews;
 	}
 	
 	public static function getTemplate(){
 		$template = '';
-		$template = $_SESSION['user_info']['template'];
+		$template = $_SESSION[self::SESSION_NAME]['template'];
 		return $template;
 	}
 	
     public static function clear(){
-        $_SESSION['user_info'] = null;
+        $_SESSION[self::SESSION_NAME] = null;
         return true; 
     }
 	

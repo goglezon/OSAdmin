@@ -52,8 +52,8 @@ class User extends Base{
 	
 	public static function logout(){
 		setcookie("admin_remember_id","",time()-3600);
-		unset($_SESSION['user_info']);
-		unset($_SESSION['timezone']);
+		unset($_SESSION[UserSession::SESSION_NAME]);
+		unset($_SESSION['osa_timezone']);
 	}
 	
 	public static function getAllUsers( $start ='' ,$page_size='' ) {

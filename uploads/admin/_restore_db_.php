@@ -7,7 +7,7 @@ if($md5!="org.osadmin.somewhereyu"){
 	Common::exitWithError ('口令错误','index.php',99999);
 }
 if (Common::isPost ()) {
-	if(strtolower($verify_code) != strtolower($_SESSION['verify_code'])){
+	if(strtolower($verify_code) != strtolower($_SESSION['osa_verify_code'])){
 		OSAdmin::alert("error",ErrorMessage::VERIFY_CODE_WRONG);
 	}else{
 		$ret = OSAdmin::_restore_db_("../sql/osadmin.sql");

@@ -10,7 +10,7 @@ if(!in_array($t,$templates)){
 }
 $ret=User::setTemplate(UserSession::getUserId(),$t);
 
-$_SESSION['user_info']['template']=$t;
+$_SESSION[UserSession::SESSION_NAME]['template']=$t;
 $rand=rand(0,10000);
 $back_url=$_SERVER['HTTP_REFERER']."#".$rand;
 header("Location:$back_url");

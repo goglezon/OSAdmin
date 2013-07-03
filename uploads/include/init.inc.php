@@ -32,12 +32,12 @@ function OSAdminAutoLoad($classname){
 }
 spl_autoload_register('OSAdminAutoLoad');
 
-if(!isset($_SESSION['timezone'])){
+if(!isset($_SESSION['osa_timezone'])){
 		$timezone = System::get('timezone');
-		$_SESSION['timezone']=$timezone;
+		$_SESSION['osa_timezone']=$timezone;
 }
 
-date_default_timezone_set($_SESSION['timezone']);
+date_default_timezone_set($_SESSION['osa_timezone']);
 
 /*
 不需要登录就可以访问的链接，也可以是某个目录，不含子目录
@@ -53,7 +53,7 @@ if( OSAdmin::checkNoNeedLogin($action_url,$no_need_login_page) ){
 	;
 }else{
 	//else之后 需要验证登录信息
-	if(empty($_SESSION['user_info'])){
+	if(empty($_SESSION[UserSession::SESSION_NAME])){
 		$user_id=User::getCookieRemember();
 		if($user_id>0){
 			User::loginDoSomething($user_id);
