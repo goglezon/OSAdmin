@@ -16,7 +16,9 @@
 	<link rel="stylesheet" href="<{$smarty.const.ADMIN_URL}>/assets/css/jquery-ui.css" />
 	
     <script src="<{$smarty.const.ADMIN_URL}>/assets/lib/jquery-1.8.1.min.js" ></script>
+	<!--script src="http://www.cnbootstrap.com/assets/js/jquery.js"></script-->
 	<script src="<{$smarty.const.ADMIN_URL}>/assets/lib/bootstrap/js/bootbox.min.js"></script>
+	<script src="<{$smarty.const.ADMIN_URL}>/assets/lib/bootstrap/js/bootstrap-modal.js"></script>
 	<script src="<{$smarty.const.ADMIN_URL}>/assets/js/other.js"></script>
 	<script src="<{$smarty.const.ADMIN_URL}>/assets/js/jquery-ui.js"></script>
     <!-- Demo page code -->

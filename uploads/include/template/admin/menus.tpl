@@ -8,7 +8,7 @@
 <{$osadmin_quick_note}>
 
 <div class="btn-toolbar"  style="margin-bottom:2px;">
-    <a href="menu_add.php"><button class="btn btn-primary"><i class="icon-plus"></i> 功能</button></a>
+    <a href="menu_add.php"  class="btn btn-primary"><i class="icon-plus"></i> 功能</a>
 	<a data-toggle="collapse" data-target="#search"  href="#" title= "检索"><button class="btn btn-primary" style="margin-left:5px"><i class="icon-search"></i></button></a>
 </div>
 <{ if $_GET.search }>

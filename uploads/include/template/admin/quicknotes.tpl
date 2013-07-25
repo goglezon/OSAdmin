@@ -6,7 +6,7 @@
 <{$osadmin_action_alert}>
 <{$osadmin_quick_note}>
 <div class="btn-toolbar">
-	<a href="quicknote_add.php"><button class="btn btn-primary"><i class="icon-plus"></i> Quick Note</button></a>
+	<a href="quicknote_add.php"  class="btn btn-primary"><i class="icon-plus"></i> Quick Note</a>
 </div>
 <div class="block">
 	<a href="#page-stats" class="block-heading" data-toggle="collapse">Quick Note列表</a>

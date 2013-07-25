@@ -5,7 +5,7 @@
 
 <{$osadmin_action_alert}>
 <{$osadmin_quick_note}>
-<select name="group_id" onchange="javascript:location.replace('group_role.php?group_id='+this.options[this.selectedIndex].value)">
+<select name="group_id" onchange="javascript:location.replace('group_role.php?group_id='+this.options[this.selectedIndex].value)" style="margin:5px 0px 0px">
 	<{html_options options=$group_option_list selected=$group_id}>
 </select>
 <form method="post" action="">
@@ -23,4 +23,5 @@
 		<button class="btn btn-primary">更新</button>
 	</div>
 </form>
+
 <{ include file="footer.tpl" }>

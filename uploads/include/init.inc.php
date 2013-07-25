@@ -1,4 +1,5 @@
 <?php
+error_reporting( E_ALL );
 require 'config/config.inc.php';
 session_start();
 function OSAdminAutoLoad($classname){

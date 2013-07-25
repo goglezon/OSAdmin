@@ -94,6 +94,7 @@ class MenuUrl extends Base {
 		}
 		$db=self::__instance();
 		$id = $db->insert ( self::getTableName(), $function_data );
+		self::clearSession();
 		return $id;
 	}
 	
@@ -114,6 +115,10 @@ class MenuUrl extends Base {
 			return $list;
 		}
 		return array ();
+	}
+	
+	public static function clearSession(){
+		unset($_SESSION[self::SESSION_NAME]);
 	}
 	
 	public static function getSessionMenus() {

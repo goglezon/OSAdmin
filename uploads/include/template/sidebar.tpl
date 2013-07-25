@@ -1,7 +1,7 @@
 <div class="sidebar-nav">
 		<{foreach from=$sidebar item=module}>
 			<{if $module.menu_list|@count neq 0}>
-			<a href="#sidebar_menu_<{$module.module_id}>" class="nav-header collapsed" data-toggle="collapse"><i class="icon-th"></i><{$module.module_name}> <i class="icon-chevron-up"></i></a>
+			<a href="#sidebar_menu_<{$module.module_id}>" class="nav-header collapsed" data-toggle="collapse"><i class="<{$module.module_icon}>"></i><{$module.module_name}> <i class="icon-chevron-up"></i></a>
 			<{if $module.module_id == $current_module_id }>
 				<ul id="sidebar_menu_<{$module.module_id}>" class="nav nav-list collapse in">
 			<{ else }>

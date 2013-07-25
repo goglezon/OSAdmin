@@ -1,6 +1,6 @@
 <?php
 require ('../include/init.inc.php');
-$module_id = $module_name = $module_sort = $module_url = $module_desc = $online = '';
+$module_id = $module_name = $module_sort = $module_url = $module_desc = $module_icon = $online = '';
 extract ( $_REQUEST, EXTR_IF_EXISTS );
 
 Common::checkParam($module_id);
@@ -15,7 +15,7 @@ if (Common::isPost ()) {
 	if($module_name =="" || $module_url == "" ){
 		OSAdmin::alert("error",ErrorMessage::NEED_PARAM);
 	}else{
-		$update_data = array ('module_name' => $module_name, 'module_desc' => $module_desc, 'module_url' => $module_url ,
+		$update_data = array ('module_name' => $module_name, 'module_desc' => $module_desc, 'module_icon' => $module_icon ,'module_url' => $module_url ,
 						'module_sort' =>$module_sort);
 		if($module_id >1){
 			$update_data['online'] =$online;

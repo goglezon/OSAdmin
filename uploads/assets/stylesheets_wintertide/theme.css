@@ -184,7 +184,8 @@ footer hr {
   -webkit-box-shadow: 0px 1px 0px #ffffff;
   -moz-box-shadow: 0px 1px 0px #ffffff;
   box-shadow: 0px 1px 0px #ffffff;
-}
+  margin: 1em 0em;
+ }
 .block-heading[data-toggle="collapse"] {
   cursor: pointer;
 }
@@ -704,7 +705,7 @@ input[type="password"] {
   -webkit-box-shadow: 1px 1px 0px #ffffff;
   -moz-box-shadow: 1px 1px 0px #ffffff;
   box-shadow: 1px 1px 0px #ffffff;
-  margin:0px 20px 20px 20px;
+  margin:0px 20px 0.5em 20px;
 }
 
 

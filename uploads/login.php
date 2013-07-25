@@ -15,7 +15,8 @@ if (Common::isPost ()) {
 				User::loginDoSomething($user_info['user_id']);
 				
 				if($remember){
-					User::setCookieRemember($user_info['user_id'],7);
+					$encrypted = OSAEncrypt::encrypt($user_info['user_id']);
+					User::setCookieRemember(urlencode($encrypted),30);
 				}
 				$ip = Common::getIp();
 				SysLog::addLog ( $user_name, 'LOGIN', 'User' ,UserSession::getUserId(),json_encode(array("IP" => $ip)));

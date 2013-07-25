@@ -6,7 +6,7 @@
 <{$osadmin_action_alert}>
 <{$osadmin_quick_note}>
 <div class="btn-toolbar">
-	<a href="module_add.php"><button class="btn btn-primary"><i class="icon-plus"></i> 模块</button></a>
+	<a href="module_add.php" class="btn btn-primary"><i class="icon-plus"></i> 模块</a>
 </div>
 <div class="block">
 	<a href="#page-stats" class="block-heading" data-toggle="collapse">模块列表</a>
@@ -20,6 +20,7 @@
 				<th>排序</th>
 				<th>是否在线</th>
 				<th>描述</th>
+				<th>图标</th>
 				<th width="80px">操作</th>
 			</tr>
 			</thead>
@@ -40,6 +41,7 @@
 					<{ /if}>
 				</td>
 				<td><{$module.module_desc}></td>
+				<td><i class="<{$module.module_icon}>"></i></td>
 				<td>
 				<a href="module.php?module_id=<{$module.module_id}>" title= "菜单链接列表" ><i class="icon-list-alt"></i></a>
 				&nbsp;

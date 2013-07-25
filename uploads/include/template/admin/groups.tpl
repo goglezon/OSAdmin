@@ -6,7 +6,7 @@
 <{$osadmin_action_alert}>
 <{$osadmin_quick_note}>
 <div class="btn-toolbar">
-	<a href="group_add.php"><button class="btn btn-primary"><i class="icon-plus"></i> 账号组</button></a>
+	<a href="group_add.php" class="btn btn-primary"><i class="icon-plus"></i> 账号组</a>
 </div>
 <div class="block">
 	<a href="#page-stats" class="block-heading" data-toggle="collapse">账号组列表</a>

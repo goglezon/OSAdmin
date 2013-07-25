@@ -42,16 +42,18 @@ class User extends Base{
 		return array ();
 	}
 	
-	public static function setCookieRemember($user_id,$day=7){
-		setcookie("admin_remember_id",$user_id,time()+3600*24*$day);
+	public static function setCookieRemember($encrypted,$day=7){
+		setcookie("osa_remember",$encrypted,time()+3600*24*$day);
 	}
 	
 	public static function getCookieRemember(){
-		return $_COOKIE["admin_remember_id"];
+		$encrypted = $_COOKIE["osa_remember"];
+		$base64=urldecode($encrypted);
+		return OSAEncrypt::decrypt($base64);
 	}
 	
 	public static function logout(){
-		setcookie("admin_remember_id","",time()-3600);
+		setcookie("osa_remember","",time()-3600);
 		unset($_SESSION[UserSession::SESSION_NAME]);
 		unset($_SESSION['osa_timezone']);
 	}

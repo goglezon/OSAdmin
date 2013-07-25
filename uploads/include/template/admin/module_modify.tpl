@@ -18,6 +18,17 @@
 				<input type="text" name="module_name" value="<{$module.module_name}>" class="input-xlarge" required="true" autofocus="true">
 				<label>模块链接</label>
 				<input type="text" name="module_url" value="<{$module.module_url}>" class="input-xlarge" required="true">
+				<label>模块图标</label>
+				<div style="width:20px;padding-bottom:5px">
+					<a class="icon" style="width:20px;line-height:2em;">
+					<i id="icon_preview" class="<{$module.module_icon}>"></i></a>
+				</div>
+				<input type="text" readonly value="<{$module.module_icon}>" name="module_icon" id="icon_id" style="width:180px" >
+				<a id="icon_select" class="btn btn-info" style="vertical-align:top" >更改图标</a>
+				<!--- 选择图标层--->			
+				<{ include file="admin/icon_select.tpl" }>
+				<!--- 选择图标层 结束--->
+				
 				<label>模块排序数字(数字越小越靠前)</label>
 				<input type="text" name="module_sort" value="<{$module.module_sort}>" class="input-xlarge" >
 				<label>是否有效</label>
@@ -34,6 +45,22 @@
 			</form>
         </div>
     </div>
-</div>	
+</div>
+<script>
+$('#icon_select').click(function(){			
+	$('#myModal').modal({
+		backdrop:true,
+		keyboard:true,
+		show:true
+    });	
+});
+
+$('.icon').click(function(){
+		var obj=$(this);
+		$('#icon_preview').removeClass().addClass(obj.text());
+		$('#icon_id').val(obj.text());
+		$('#myModal').modal('toggle');
+});
+</script>
 <!-- END 以下内容不需更改，请保证该TPL页内的标签匹配即可 -->
 <{ include file="footer.tpl" }>

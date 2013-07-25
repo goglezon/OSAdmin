@@ -18,21 +18,22 @@ $group_role = $group_info ['group_role'];
 $group_role_array = explode ( ',', $group_role );
 
 if (Common::isPost ()) {
-	$temp = array();
-	foreach ($group_role_array as $group_role){
-		
-		//系统预留菜单id为100以内
-		if($group_role>100){
-			$temp[]=$group_role;
+	if($group_id==1){
+		$temp = array();
+		foreach ($group_role_array as $group_role){
+			
+			//系统预留菜单id为100以内
+			if($group_role>100){
+				$temp[]=$group_role;
+			}
 		}
+		
+		$admin_role = array_diff($group_role_array,$temp);
+		
+		$menu_ids = array_merge($admin_role,$menu_ids);
+		$menu_ids = array_unique($menu_ids);
+		asort($menu_ids);
 	}
-	
-	$admin_role = array_diff($group_role_array,$temp);
-	
-	$menu_ids = array_merge($admin_role,$menu_ids);
-	$menu_ids = array_unique($menu_ids);
-	asort($menu_ids);
-	
 	$group_role = join ( ',', $menu_ids );
 	$group_data = array ('group_role' => $group_role );
 	$result = UserGroup::updateGroupInfo ( $group_id, $group_data );

@@ -34,6 +34,8 @@ define ( 'SAMPLE_DB_NAME' ,'osadmin');
 define ( 'SAMPLE_USER_NAME','root');
 define ( 'SAMPLE_PASSWORD','');
 
+//COOKIE加密密钥，建议修改
+define( 'OSA_ENCRYPT_KEY','whatafuckingday!');
 
 //prefix不要更改，除非修改osadmin.sql文件中的所有表名
 define ( 'OSA_TABLE_PREFIX' ,'osa_');
