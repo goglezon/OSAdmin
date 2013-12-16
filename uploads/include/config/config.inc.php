@@ -1,6 +1,6 @@
 <?php
 define ('ACCESS',1); 
-
+error_reporting(E_ALL ^ E_NOTICE);
 //autoload 使用常量
 define ( 'ADMIN_BASE', dirname ( __FILE__ ) . '/../../include' );
 define ( 'ADMIN_BASE_LIB', ADMIN_BASE . '/lib/' );
@@ -10,6 +10,7 @@ define ( 'ADMIN_BASE_CLASS', ADMIN_BASE . '/class/' );
 define ( 'TEMPLATE_DIR', ADMIN_BASE . '/template/' );
 define ( 'TEMPLATE_COMPILED', ADMIN_BASE . '/compiled/' );
 define ( 'TEMPLATE_PLUGINS', ADMIN_BASE_LIB . 'Smarty/plugins/' );
+define ( 'TEMPLATE_SYSPLUGINS', ADMIN_BASE_LIB . 'Smarty/sysplugins/' );
 define ( 'TEMPLATE_CONFIGS', ADMIN_BASE . '/config/' );
 define ( 'TEMPLATE_CACHE', ADMIN_BASE . '/cache/' );
 

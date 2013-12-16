@@ -1,4 +1,4 @@
-<{ include file = "simple_header.tpl"}>
+<{include file = "simple_header.tpl"}>
   <body class=""> 
   <!--<![endif]-->
     
@@ -41,6 +41,6 @@ $("#verify_code").click(function(){
 });
 </script>
 
-<{ include file = "footer.tpl"}>
+<{include file = "footer.tpl"}>
 
 

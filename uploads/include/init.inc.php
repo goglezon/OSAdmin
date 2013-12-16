@@ -3,7 +3,8 @@ error_reporting( E_ALL );
 require 'config/config.inc.php';
 session_start();
 function OSAdminAutoLoad($classname){
-    $filename = str_replace('_', '/', $classname) . '.class.php';
+	
+	$filename = str_replace('_', '/', $classname) . '.class.php';
     // class类
     $filepath = ADMIN_BASE_CLASS . $filename;
     if (file_exists($filepath)) {
@@ -45,7 +46,7 @@ date_default_timezone_set($_SESSION['osa_timezone']);
 如"/nologin/","/nologin/aaa/"
 */
 
-$no_need_login_page=array("/pdo.php","/login.php",	"/logout.php");
+$no_need_login_page=array("/block.php","/login.php","/logout.php",);
 
 //如果不需要登录就可以访问的话
 $action_url = Common::getActionUrl();

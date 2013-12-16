@@ -34,48 +34,48 @@
 					<tr>
 					 
 					<td>
-					<{ if $menu.menu_id <=100 }>
+					<{if $menu.menu_id <=100 }>
 					<input type="checkbox" name="menu_ids[]" value="<{$menu.menu_id}>" disabled>
-					<{ else }>
+					<{else }>
 					<input type="checkbox" name="menu_ids[]" value="<{$menu.menu_id}>" >
-					<{ /if }>
+					<{/if }>
 					</td>
 					<td><{$menu.menu_id}></td>
 					<td><{$menu.menu_name}></td>
 					<td><{$menu.menu_url}></td>
 					<td><{$menu.module_id}></td>
 					<td>
-					<{ if $menu.is_show}>
+					<{if $menu.is_show}>
 						是
 					<{else}>
 						否
-					<{ /if}>
+					<{/if}>
 					</td>
 					<td>
-					<{ if $menu.online}>
+					<{if $menu.online}>
 						在线
 					<{else}>
 						已下线
-					<{ /if}></td>
+					<{/if}></td>
 					<td>
-					<{ if $menu.shortcut_allowed}>
+					<{if $menu.shortcut_allowed}>
 						允许
 					<{else}>
 						不允许
-					<{ /if}>
+					<{/if}>
 					</td>
 					<td><{$menu.menu_desc}></td>
 					</tr>
 				<{/foreach}>
               </tbody>
             </table> 
-			<{ if $module_id > 1 }>
+			<{if $module_id > 1 }>
 			<label>选择菜单模块</label>
 				<{html_options name=module id="DropDownTimezone" class="input-xlarge" options=$module_options_list selected=0 }>
 				<div class="btn-toolbar">
 					<button type="submit" class="btn btn-primary"><strong>修改菜单模块</strong></button>
 				</div>
-			<{ /if }>
+			<{/if }>
 			</form>
         </div>
     </div>
@@ -92,4 +92,4 @@ $("#checkAll").click(function(){
 </script>
 
 <!-- END 以下内容不需更改，请保证该TPL页内的标签匹配即可 -->
-<{ include file="footer.tpl" }>
+<{include file="footer.tpl" }>

@@ -11,11 +11,11 @@
     <a href="menu_add.php"  class="btn btn-primary"><i class="icon-plus"></i> 功能</a>
 	<a data-toggle="collapse" data-target="#search"  href="#" title= "检索"><button class="btn btn-primary" style="margin-left:5px"><i class="icon-search"></i></button></a>
 </div>
-<{ if $_GET.search }>
+<{if $_GET.search }>
 <div id="search" class="collapse in">
-<{ else }>
+<{else }>
 <div id="search" class="collapse out" >
-<{ /if }>
+<{/if }>
 <form class="form_search"  action="" method="GET" style="margin-bottom:0px">
 	<div style="float:left;margin-right:5px">
 		<label>选择菜单模块</label>
@@ -62,36 +62,36 @@
 					<td><{$menu.menu_url}></td>
 					<td><{$module_options_list[$menu.module_id]}></td>
 					<td>
-					<{ if $menu.is_show}>
+					<{if $menu.is_show}>
 						是
 					<{else}>
 						否
-					<{ /if}>
+					<{/if}>
 					</td>
 					<td><{if $menu.father_menu>0}><{$menu.father_menu_name}><{/if}></td>
 					
 					<td>
-					<{ if $menu.online}>
+					<{if $menu.online}>
 						在线
 					<{else}>
 						已下线
-					<{ /if}></td>
+					<{/if}></td>
 					<td>
-					<{ if $menu.shortcut_allowed}>
+					<{if $menu.shortcut_allowed}>
 						允许
 					<{else}>
 						不允许
-					<{ /if}>
+					<{/if}>
 					</td>
 					<td><{$menu.menu_desc}></td>
 				
 					<td>
 					<a href="menu_modify.php?menu_id=<{$menu.menu_id}>" title= "修改" ><i class="icon-pencil"></i></a>
 					
-					<{ if $menu.menu_id > 100}>
+					<{if $menu.menu_id > 100}>
 					&nbsp;
 					<a data-toggle="modal" href="#myModal" title= "删除" ><i class="icon-remove" href="menus.php?page_no=<{$page_no}>&method=del&menu_id=<{$menu.menu_id}>" ></i></a>
-					<{ /if }>
+					<{/if }>
 					</td>
 					</tr>
 				<{/foreach}>
@@ -107,4 +107,4 @@
 <{$osadmin_action_confirm}>
 	
 <!--- END 以下内容不需更改，请保证该TPL页内的标签匹配即可 --->
-<{ include file="footer.tpl" }>
+<{include file="footer.tpl" }>

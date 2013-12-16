@@ -1,4 +1,4 @@
-<{ include file="simple_header.tpl"}>
+<{include file="simple_header.tpl"}>
   <body class="simple_body">
 
     <div class="navbar">
@@ -13,17 +13,17 @@
         <div class="row-fluid">
 			<div class="http-error">
 				
-				<{ if $type =="success" }>
+				<{if $type =="success" }>
 				<h1>Yep!</h1>
-				<{ elseif $type=="error" }>
+				<{elseif $type=="error" }>
 				<h1>Oops!</h1>
-				<{ else }>
+				<{else }>
 				<h1>O~!</h1>
-				<{ /if }>
+				<{/if }>
 				<p class="info"><{$message_detail}></p>
 				<h2>返回 <a href="<{$smarty.const.ADMIN_URL}><{$forward_url}>"><{$forward_title}></a></h2>
 			</div>
 	<div>	
-<{ include file="footer.tpl"}>
+<{include file="footer.tpl"}>
 
 

@@ -6,7 +6,8 @@ extract ( $_GET, EXTR_IF_EXISTS );
 if ($method == 'del' && ! empty ( $menu_id )) {
 	$menu = MenuUrl::getMenuById($menu_id);
 	
-	if(intval($menu['module_id']) === 1){
+	//if(intval($menu['module_id']) === 1){
+	if(intval($menu_id) <= 100){
 		OSAdmin::alert("error",ErrorMessage::CAN_NOT_DELETE_SYSTEM_MENU);
 	}else{
 		$result = MenuUrl::delMenu ( $menu_id );	

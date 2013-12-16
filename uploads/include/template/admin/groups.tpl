@@ -36,9 +36,9 @@
 				<a href="group_modify.php?group_id=<{$group.group_id}>" title= "修改" ><i class="icon-pencil"></i></a>
 				&nbsp;
 				
-				<{ if $group.group_id != 1 }>
+				<{if $group.group_id != 1 }>
 				<a data-toggle="modal" href="#myModal"  title= "删除" ><i class="icon-remove" href="groups.php?method=del&group_id=<{$group.group_id}>#myModal" data-toggle="modal" ></i></a>
-				<{ /if }>
+				<{/if }>
 				</td>
 				</tr>
 			<{/foreach}>
@@ -51,4 +51,4 @@
 <{$osadmin_action_confirm}>
 	
 <!-- TPLEND 以下内容不需更改，请保证该TPL页内的标签匹配即可 -->
-<{ include file="footer.tpl" }>
+<{include file="footer.tpl" }>

@@ -29,11 +29,11 @@
 				<textarea name="user_desc" rows="3" class="input-xlarge"><{$user.user_desc}></textarea>
 				<label>账号组</label>
 				
-				<{ if $user.user_id == 1}>
+				<{if $user.user_id == 1}>
 				<{html_options name=user_group id="DropDownTimezone" class="input-xlarge" options=$group_options disabled="true" selected=$user.user_group}>
-				<{ else }>
+				<{else }>
 				<{html_options name=user_group id="DropDownTimezone" class="input-xlarge" options=$group_options  selected=$user.user_group}>
-				<{ /if }>
+				<{/if }>
 			<div class="btn-toolbar">
 				<button type="submit" class="btn btn-primary"><strong>提交</strong></button>
 				<div class="btn-group"></div>
@@ -43,4 +43,4 @@
     </div>
 </div>	
 <!-- END 以下内容不需更改，请保证该TPL页内的标签匹配即可 -->
-<{ include file="footer.tpl" }>
+<{include file="footer.tpl" }>

@@ -26,7 +26,7 @@ class Common {
 		}else{
 			$action_url =$action_script;
 		}
-		return $action_url;
+		return str_replace('//','/',$action_url);
 	}
 	public static function exitWithMessage($message_detail, $forward_url, $second = 3,$type="message") {
 

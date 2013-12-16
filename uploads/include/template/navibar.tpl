@@ -6,7 +6,7 @@
                     
                     <!-- li><a href="#" class="hidden-phone visible-tablet visible-desktop" role="button">设置模板</a></li -->
 					 
-					<{ if $user_info.setting }>
+					<{if $user_info.setting}>
                     <li id="fat-menu" class="dropdown">
                         <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
 							<i class="icon-cog"></i>设置<i class="icon-caret-down"></i>
@@ -15,7 +15,7 @@
                             <li><a href="<{$smarty.const.ADMIN_URL}>/admin/setting.php">系统设置</a></li>
                         </ul>
                     </li>
-					<{ /if }>
+					<{/if}>
 					
 					<li id="fat-menu" class="dropdown">
                         <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">

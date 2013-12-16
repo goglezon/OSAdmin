@@ -8,21 +8,21 @@
 
 <div class="well">
     <ul class="nav nav-tabs">
-		<{ if $change_password }>
+		<{if $change_password }>
 			<li ><a href="#home" data-toggle="tab">资料</a></li>
 			<li class="active"><a href="#profile" data-toggle="tab">密码</a></li>
-		<{ else }>
+		<{else }>
 			<li class="active"><a href="#home" data-toggle="tab">资料</a></li>
 			<li><a href="#profile" data-toggle="tab">密码</a></li>
-		<{ /if}>
+		<{/if}>
     </ul>
     <div id="myTabContent" class="tab-content">
 		
-		<{ if $change_password }>
+		<{if $change_password }>
 		  <div class="tab-pane fade" id="home">
-		<{ else }>
+		<{else }>
 		  <div class="tab-pane active in" id="home">
-		<{ /if}>
+		<{/if}>
 			<form id="tab" method="post" action="" autocomplete="off">
 				<label>登录名</label>
 				<input type="text" name="user_name" value="<{$user_info.user_name}>" class="input-xlarge" readonly="true">
@@ -44,11 +44,11 @@
 				</div>
 			</form>
 		  </div>
-		<{ if $change_password }>
+		<{if $change_password }>
 		<div class="tab-pane active in" id="profile">
-		<{ else }>
+		<{else }>
 		<div class="tab-pane fade" id="profile">
-		<{ /if}>
+		<{/if}>
 			<form id="tab2" method="post" action="" autocomplete="off">
 				<input type="hidden" name="change_password" value="yes" >
 				<label>原密码</label>
@@ -62,4 +62,4 @@
 		</div>
   </div>
 </div>
-<{ include file="footer.tpl" }>
+<{include file="footer.tpl" }>

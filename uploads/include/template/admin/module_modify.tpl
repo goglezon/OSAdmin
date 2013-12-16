@@ -26,17 +26,17 @@
 				<input type="text" readonly value="<{$module.module_icon}>" name="module_icon" id="icon_id" style="width:180px" >
 				<a id="icon_select" class="btn btn-info" style="vertical-align:top" >更改图标</a>
 				<!--- 选择图标层--->			
-				<{ include file="admin/icon_select.tpl" }>
+				<{include file="admin/icon_select.tpl" }>
 				<!--- 选择图标层 结束--->
 				
 				<label>模块排序数字(数字越小越靠前)</label>
 				<input type="text" name="module_sort" value="<{$module.module_sort}>" class="input-xlarge" >
 				<label>是否有效</label>
-				<{ if $module.module_id ==1 }>
+				<{if $module.module_id ==1 }>
 				<{html_options name=online id="DropDownTimezone" class="input-xlarge" options=$module_online_optioins disabled="true" selected=$module.online}>
-				<{ else }>
+				<{else }>
 				<{html_options name=online id="DropDownTimezone" class="input-xlarge" options=$module_online_optioins selected=$module.online}>
-				<{ /if}>
+				<{/if}>
 				<label>描述</label>
 				<textarea name="module_desc" rows="3" class="input-xlarge"><{$module.module_desc}></textarea>
 				<div class="btn-toolbar">
@@ -63,4 +63,4 @@ $('.icon').click(function(){
 });
 </script>
 <!-- END 以下内容不需更改，请保证该TPL页内的标签匹配即可 -->
-<{ include file="footer.tpl" }>
+<{include file="footer.tpl" }>

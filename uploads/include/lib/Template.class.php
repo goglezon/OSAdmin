@@ -25,11 +25,17 @@ class Template{
 	static private function getTemplate(){
 		if ( null==self::$mTemplate ){
 			$smarty = new Smarty();
-            $smarty->template_dir = TEMPLATE_DIR;
-            $smarty->compile_dir = TEMPLATE_COMPILED;
-            $smarty->config_dir = TEMPLATE_CONFIGS;
-            $smarty->cache_dir = TEMPLATE_CACHE;
-			$smarty->plugins_dir = TEMPLATE_PLUGINS;
+			$smarty->setTemplateDir(TEMPLATE_DIR);
+            //$smarty->template_dir = TEMPLATE_DIR;
+			$smarty->setCompileDir(TEMPLATE_COMPILED);
+            //$smarty->compile_dir = TEMPLATE_COMPILED;
+			$smarty->setConfigDir(TEMPLATE_CONFIGS);
+            //$smarty->config_dir = TEMPLATE_CONFIGS;
+            $smarty->setCacheDir(TEMPLATE_CACHE);
+			//$smarty->cache_dir = TEMPLATE_CACHE;
+			$smarty->setPluginsDir(TEMPLATE_PLUGINS);
+			//$smarty->plugins_dir = TEMPLATE_PLUGINS;
+
 			$smarty->left_delimiter = '<{'; 
 			$smarty->right_delimiter = '}>';
 			self::$mTemplate = $smarty;
@@ -56,6 +62,7 @@ class Template{
 		if ( is_array($v) ) self::Assign($v);
 		else $cache_id = $v;
 		$smarty = self::getTemplate();
+		//var_dump($smarty);
 		$smarty->display( $tpl_file, $cache_id );
 		self::closeTemplate();
 	}

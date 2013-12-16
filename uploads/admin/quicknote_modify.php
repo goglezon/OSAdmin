@@ -17,7 +17,7 @@ if (Common::isPost ()) {
 		$current_user_info=UserSession::getSessionInfo();
 		$user_group = $current_user_info['user_group'];
 		$current_user_id = $current_user_info['user_id'];
-		if($user_group ==1 || $note['owner_id'] == $current_user_id){
+		if($user_group ==1 || $quicknote['owner_id'] == $current_user_id){
 			$note_content = htmlspecialchars($note_content);
 			$update_data = array ('note_content' => $note_content);
 			$result = QuickNote::updateNote( $note_id,$update_data );

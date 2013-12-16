@@ -11,11 +11,11 @@
     <a href="user_add.php" class="btn btn-primary"><i class="icon-plus"></i> 账号</a>
 	<a data-toggle="collapse" data-target="#search"  href="#" title= "检索"><button class="btn btn-primary" style="margin-left:5px"><i class="icon-search"></i></button></a>
 </div>
-<{ if $_GET.search }>
+<{if $_GET.search }>
 <div id="search" class="collapse in">
-<{ else }>
+<{else }>
 <div id="search" class="collapse out" >
-<{ /if }>
+<{/if }>
 <form class="form_search"  action="" method="GET" style="margin-bottom:0px">
 	<div style="float:left;margin-right:5px">
 		<label>选择账号组</label>
@@ -66,16 +66,16 @@
 					<a href="user_modify.php?user_id=<{$user_info.user_id}>" title= "修改" ><i class="icon-pencil"></i></a>
 					&nbsp;
 					
-					<{ if $user_info.user_id != 1}>
+					<{if $user_info.user_id != 1}>
 					<{if $user_info.status == 1}>
 					<a data-toggle="modal" href="#myModal"  title= "封停账号" ><i class="icon-pause" href="users.php?page_no=<{$page_no}>&method=pause&user_id=<{$user_info.user_id}>"></i></a>
-					<{ /if }>
+					<{/if }>
 					<{if $user_info.status == 0}>
 					<a data-toggle="modal" href="#myModal" title= "解封账号" ><i class="icon-play" href="users.php?page_no=<{$page_no}>&method=play&user_id=<{$user_info.user_id}>"></i></a>
-					<{ /if }>
+					<{/if }>
 					&nbsp;
 					<a data-toggle="modal" href="#myModal" title= "删除" ><i class="icon-remove" href="users.php?page_no=<{$page_no}>&method=del&user_id=<{$user_info.user_id}>" ></i></a>
-					<{ /if}>
+					<{/if}>
 					</td>
 					</tr>
 				<{/foreach}>
@@ -93,4 +93,4 @@
 <{$osadmin_action_confirm}>
 
 <!--- END 以下内容不需更改，请保证该TPL页内的标签匹配即可 --->
-<{ include file="footer.tpl" }>
+<{include file="footer.tpl" }>

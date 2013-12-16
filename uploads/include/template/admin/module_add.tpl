@@ -27,7 +27,7 @@
 				<input type="text" readonly value="icon-th" name="module_icon" id="icon_id" style="width:180px" >
 				<a id="icon_select" class="btn btn-info" style="vertical-align:top" >更改图标</a>
 				<!--- 选择图标层--->			
-				<{ include file="admin/icon_select.tpl" }>
+				<{include file="admin/icon_select.tpl" }>
 				<!--- 选择图标层 结束--->
 
 				
@@ -59,4 +59,4 @@ $('.icon').click(function(){
 });
 </script>
 <!-- END 以下内容不需更改，请保证该TPL页内的标签匹配即可 -->
-<{ include file="footer.tpl" }>
+<{include file="footer.tpl" }>

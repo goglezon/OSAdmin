@@ -29,7 +29,7 @@
 				<td><{$note.owner_name}></td>
 				<td><{$note.note_content}></td>
 				<td>
-				<{ if $user_group ==1 || $note.owner_id == $current_user_id }>
+				<{if $user_group ==1 || $note.owner_id == $current_user_id }>
 				<a href="quicknote_modify.php?note_id=<{$note.note_id}>" title= "修改" ><i class="icon-pencil"></i></a>
 				&nbsp;
 				<a data-toggle="modal" href="#myModal"  title= "删除" ><i class="icon-remove" href="quicknotes.php?method=del&note_id=<{$note.note_id}>#myModal" data-toggle="modal" ></i></a>
@@ -51,4 +51,4 @@
 <{$osadmin_action_confirm}>
 	
 <!-- TPLEND 以下内容不需更改，请保证该TPL页内的标签匹配即可 -->
-<{ include file="footer.tpl" }>
+<{include file="footer.tpl" }>

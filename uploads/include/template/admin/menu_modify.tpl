@@ -21,11 +21,11 @@
 				<input type="text" name="menu_url" value="<{$menu.menu_url}>" class="input-xlarge" required="true" >
 				
 				<label>所属模块</label>
-				<{ if $menu.menu_id >100 }>
+				<{if $menu.menu_id >100 }>
 				<{html_options name=module_id id="DropDownTimezone" class="input-xlarge" options=$module_options_list selected=$menu.module_id}>
-				<{ else }>
+				<{else }>
 				<{html_options name=module_id id="DropDownTimezone" class="input-xlarge" options=$module_options_list disabled="true" selected=$menu.module_id}>
-				<{ /if}>
+				<{/if}>
 				<label>是否显示为左侧菜单</label>
 				<{html_options name=is_show id="DropDownTimezone" class="input-xlarge" options=$show_options_list selected=$menu.is_show}>
 				<label>所属菜单</label>
@@ -44,4 +44,4 @@
     </div>
 </div>
 <!-- END 以下内容不需更改，请保证该TPL页内的标签匹配即可 -->
-<{ include file="footer.tpl" }>
+<{include file="footer.tpl" }>

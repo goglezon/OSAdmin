@@ -10,18 +10,18 @@
 </select>
 <form method="post" action="">
 <{foreach from=$role_list item=role}>
-	<{ if $role.menu_info | count >0 }>
+	<{if count($role.menu_info) >0 }>
 		<div class="block">
 			<a href="#page-stats_<{$role.module_id}>" class="block-heading" data-toggle="collapse"><{$role.module_name}></a>
 			<div id="page-stats_<{$role.module_id}>" class="block-body collapse in">
 			<{html_checkboxes name="menu_ids"  options=$role.menu_info checked=$group_role separator="&nbsp;&nbsp;" labels="1"  }>						
 			</div>
 		</div>
-	<{ /if }>
+	<{/if }>
 <{/foreach}>											
 	<div>
 		<button class="btn btn-primary">更新</button>
 	</div>
 </form>
 
-<{ include file="footer.tpl" }>
+<{include file="footer.tpl" }>

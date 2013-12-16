@@ -34,11 +34,11 @@
 				<td><{$module.module_url}></td>
 				<td><{$module.module_sort}></td>
 				<td>
-					<{ if $module.online}>
+					<{if $module.online}>
 						在线
 					<{else}>
 						已下线
-					<{ /if}>
+					<{/if}>
 				</td>
 				<td><{$module.module_desc}></td>
 				<td><i class="<{$module.module_icon}>"></i></td>
@@ -47,9 +47,9 @@
 				&nbsp;
 				<a href="module_modify.php?module_id=<{$module.module_id}>" title= "修改" ><i class="icon-pencil"></i></a>
 				&nbsp;
-				<{ if $module.module_id != 1 }>
+				<{if $module.module_id != 1 }>
 				<a data-toggle="modal" href="#myModal"  title= "删除" ><i class="icon-remove" href="modules.php?method=del&module_id=<{$module.module_id}>"></i></a>
-				<{ /if}>
+				<{/if}>
 				</td>
 				</tr>
 			<{/foreach}>
@@ -62,4 +62,4 @@
 <{$osadmin_action_confirm}>
 	
 <!-- TPLEND 以下内容不需更改，请保证该TPL页内的标签匹配即可 -->
-<{ include file="footer.tpl" }>
+<{include file="footer.tpl" }>

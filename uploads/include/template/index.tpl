@@ -11,7 +11,7 @@
         <a href="#page-menu" class="block-heading" data-toggle="collapse">快捷菜单</a>
         <div id="page-menu" class="block-body collapse in">
 		<h3>
-		<{if $menus |@count >0}>
+		<{if count($menus) >0  }>
 			<{foreach name=menu from=$menus item=menu}>
 			<span>
 				<a href="<{$smarty.const.ADMIN_URL}><{$menu.menu_url}>">
@@ -56,4 +56,4 @@
     </div>
 	
 <!--- END 以下内容不需更改，请保证该TPL页内的标签匹配即可 --->
-<{ include file="footer.tpl" }>
+<{include file="footer.tpl"}>
