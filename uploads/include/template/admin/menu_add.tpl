@@ -17,8 +17,8 @@
            <form id="tab" method="post" action="">
 				<label>名称</label>
 				<input type="text" name="menu_name" value="<{$_POST.menu_name}>" class="input-xlarge" required="true" autofocus="true">
-				<label>链接 <span class="label label-important">不可重复</span></label>
-				<input type="text" name="menu_url" value="<{$_POST.menu_url}>" class="input-xlarge" required="true" >
+				<label>链接 <span class="label label-important">不可重复，以/开头的相对路径或者http网址</span></label>
+				<input type="text" name="menu_url" value="<{$_POST.menu_url}>" class="input-xlarge" placeholder="/admin/"  required="true" >
 				<label>所属模块</label>
 				<{html_options name=module_id id="DropDownTimezone" class="input-xlarge" options=$module_options_list selected=0}>
 				<label>是否左侧菜单栏显示</label>
