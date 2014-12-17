@@ -29,9 +29,17 @@
   padding: 0em 1.25em;
   margin-left:0.5em;
 }
-body {
+.body {
   background: #eee;
   background-image: url(../images/furley_bg1.png);
+  background-position: initial initial;
+  background-repeat: initial initial;
+  margin: 0px;
+  padding: 0px;
+}
+.body-fullscreen {
+  background: #eee;
+  
   background-position: initial initial;
   background-repeat: initial initial;
   margin: 0px;
@@ -51,6 +59,16 @@ body {
   position: relative;
   min-height: 580px;
   margin-left: 260px;
+  #border-left: 1px solid #cccccc;
+  #border-left: 3px solid #999999;
+  #padding-left: 10px;
+}
+
+.content-fullscreen {
+  min-width: 400px;
+  position: relative;
+  min-height: 580px;
+  margin-left: 0px;
   #border-left: 1px solid #cccccc;
   #border-left: 3px solid #999999;
   #padding-left: 10px;
@@ -262,6 +280,9 @@ footer hr {
   width:258px;
   float:left;
   position:absolute;
+}
+.sidebar-nav-hide {
+  display:none;
 }
 .sidebar-nav .nav-header {
   display: block;
@@ -602,6 +623,7 @@ input[type="password"] {
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
   padding: .25em 1em;
+  margin:0.5em 1em 0.5em 1em;
   border: 1px solid #f2e187;
   background: #f7ecb5;
   background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #f7ecb5), color-stop(1, #fcf8e3));

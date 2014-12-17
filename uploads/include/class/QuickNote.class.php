@@ -4,7 +4,7 @@ class QuickNote extends Base {
 	// 表名
 	private static $table_name = 'quick_note';
 	// 查询字段
-	private static $columns = 'note_id, note_content, owner_id';
+	private static $columns = array('note_id', 'note_content', 'owner_id');
 	//状态定义
 	
 	public static function getTableName(){
@@ -18,7 +18,8 @@ class QuickNote extends Base {
 		if($page_size){
 			$limit =" limit $start,$page_size ";
 		}
-		$sql="select ".self::$columns." ,coalesce(u.user_name,'已删除') as owner_name from ".self::getTableName()." q left join ".User::getTableName()." u on q.owner_id =  u.user_id order by q.note_id desc $limit";
+		$columns = implode(self::$columns,',');
+		$sql="select ".$columns." ,coalesce(u.user_name,'已删除') as owner_name from ".self::getTableName()." q left join ".User::getTableName()." u on q.owner_id =  u.user_id order by q.note_id desc $limit";
 		$list = $db->query($sql)->fetchAll();
 		if ($list) {
 			return $list;

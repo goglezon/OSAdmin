@@ -2,7 +2,7 @@
 if(!defined('ACCESS')) {exit('Access denied.');}
 class System extends Base{
 	private static $table_name = 'system';
-	private static $columns = 'key_name, key_value';
+	private static $columns = array('key_name', 'key_value');
 	
 	public static function getTableName(){
 		return parent::$table_prefix.self::$table_name;

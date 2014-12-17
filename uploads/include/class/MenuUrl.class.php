@@ -3,7 +3,7 @@ if(!defined('ACCESS')) {exit('Access denied.');}
 class MenuUrl extends Base {
 	private static $table_name = 'menu_url';
 	// 查询字段
-	private static $columns = 'menu_id, menu_name, menu_url, module_id, is_show, online, shortcut_allowed,menu_desc,father_menu';	
+	private static $columns = array('menu_id', 'menu_name', 'menu_url', 'module_id', 'is_show', 'online', 'shortcut_allowed','menu_desc,father_menu');	
 	const SESSION_NAME = 'osa_menuurl_list';
 	
 	public static function getTableName(){

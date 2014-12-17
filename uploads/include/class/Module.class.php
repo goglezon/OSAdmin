@@ -4,7 +4,7 @@ class Module extends Base {
 	// 表名
 	private static $table_name = 'module';
 	// 查询字段
-	private static $columns = 'module_id, module_name, module_url, module_sort, module_desc,module_icon,online';
+	private static $columns = array('module_id', 'module_name', 'module_url', 'module_sort', 'module_desc','module_icon,online');
 	
 	public static function getTableName(){
 		return parent::$table_prefix.self::$table_name;

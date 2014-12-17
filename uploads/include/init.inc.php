@@ -46,7 +46,7 @@ date_default_timezone_set($_SESSION['osa_timezone']);
 如"/nologin/","/nologin/aaa/"
 */
 
-$no_need_login_page=array("/block.php","/login.php","/logout.php",);
+$no_need_login_page=array("/block.php","/panel/login.php","/panel/logout.php",);
 
 //如果不需要登录就可以访问的话
 $action_url = Common::getActionUrl();
@@ -84,4 +84,9 @@ if( OSAdmin::checkNoNeedLogin($action_url,$no_need_login_page) ){
 		Template::assign ( 'user_info', UserSession::getSessionInfo());
 	}
 }
+
+Template::assign ( 'osa_templates', $OSA_TEMPLATES);
+
+$sidebarStatus=$_COOKIE['sidebarStatus']==null?"yes":$_COOKIE['sidebarStatus'];
+Template::assign ( 'sidebarStatus', $sidebarStatus);
 ?>

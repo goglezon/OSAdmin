@@ -275,10 +275,10 @@ class Medoo{
 		return $query ? $query->fetchAll(PDO::FETCH_ASSOC)
 		 : false;
 		
-		/*return $query ? $query->fetchAll(
+		return $query ? $query->fetchAll(
 			(is_string($columns) && $columns != '*') ? PDO::FETCH_COLUMN : PDO::FETCH_ASSOC
 		) : false;
-		*/
+		
 	}
 		
 	public function insert($table, $data)

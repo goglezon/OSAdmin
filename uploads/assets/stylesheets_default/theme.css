@@ -11,16 +11,24 @@
     More info at: http://lesselements.com
 -----------------------------------------------------*/
 /*Standard Elements*/
-body {
-  background: #eee;
+.body {
+  background: #FFF;
   background: url(../images/furley_bg2.png) repeat-y ;
   background-position: initial initial;
   background-repeat: initial initial;
   margin: 0px;
   padding: 0px;
 }
+.body-fullscreen {
+  background: #FFF;
+  
+  background-position: initial initial;
+  background-repeat: initial initial;
+  margin: 0px;
+  padding: 0px;
+}
 .simple_body {
-  background: #eee;
+  background: #FFF;
   background: url(../images/furley_bg1.png) ;
   background-position: initial initial;
   background-repeat: initial initial;
@@ -104,9 +112,18 @@ hr {
   min-height: 580px;
   background: #fff;
   margin-left: 240px;
-  border-left: 1px solid #cccccc;
   border-left: 3px solid #999999;
 }
+
+.content-fullscreen {
+  min-width: 400px;
+  position: relative;
+  min-height: 580px;
+  background: #fff;
+  margin-left: 0px;
+  border-left: 0px solid #999999;
+}
+
 .header {
   background: #ffffff;
   background: #ffffff;
@@ -292,6 +309,9 @@ a.block-heading:hover,
   border-top: none;
   border-left: none;
   margin: 0em;
+}
+.sidebar-nav-hide {
+  display:none;
 }
 .sidebar-nav .nav-header {
   border-top: 1px solid #ffffff;
@@ -524,7 +544,7 @@ input[type="password"] {
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
   padding: .5em 1em;
-  margin-top: 1em;
+  margin:0.5em 1em 0.5em 1em;
   border: 1px solid #f2e187;
   background: #f7ecb5;
   background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #f7ecb5), color-stop(1, #fcf8e3));

@@ -1,4 +1,8 @@
-<div class="sidebar-nav">
+<{if $sidebarStatus=='yes' }>
+<div id="sidebar-nav" class="sidebar-nav">
+<{else}>
+<div id="sidebar-nav" class="sidebar-nav-hide">
+<{/if}>
 		<{foreach from=$sidebar item=module}>
 			<{if count($module.menu_list)> 0}>
 			<a href="#sidebar_menu_<{$module.module_id}>" class="nav-header collapsed" data-toggle="collapse"><i class="<{$module.module_icon}>"></i><{$module.module_name}> <i class="icon-chevron-up"></i></a>
@@ -24,11 +28,12 @@
 
         <a target="_blank" href="http://osadmin.org" class="nav-header" ><i class="icon-question-sign"></i>帮助</a>
 </div>
-	
 	 <!--- 以上为左侧菜单栏 sidebar --->
-	 
-<div class="content">
-        
+<{if $sidebarStatus=='yes' }>
+<div id="content" class="content">
+<{else}>
+<div id="content" class="content-fullscreen">
+<{/if}>        
         <div class="header">
             <div class="stats">
 			<p class="stat"><!--span class="number"></span--></p>
