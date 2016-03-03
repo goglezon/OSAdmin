@@ -1,28 +1,29 @@
 <?php
-if(!defined('ACCESS')) {exit('Access denied.');}
+if (!defined('ACCESS')) {exit('Access denied.');}
 
-class Sample extends SampleBase {
+class Sample extends SampleBase
+{
 //class Sample extends Base {
 	private static $table_name = 'sample';
- 
+
 	private static $columns = 'sample_id, sample_content';
- 
-	
-	public static function getTableName(){
+
+	public static function getTableName()
+	{
 		return self::$table_name;
 	}
-	 
+
 	public static function getSamples() {
-	
-		//ÒÔÏÂÁ½ÖÖ·½Ê½¾ù¿ÉÒÔ·ÃÎÊsampleµÄDB
-		$db=self::__instance();
-		//$db=self::__instance(SAMPLE_DB_ID);
-		
-		$sql="select ".self::$columns." from ".self::getTableName();
+
+		// ä»¥ä¸‹ä¸¤ç§æ–¹å¼å‡å¯ä»¥è®¿é—® sample çš„ DB
+		$db = self::__instance();
+		// $db = self::__instance(SAMPLE_DB_ID);
+
+		$sql = "select ".self::$columns." from ".self::getTableName();
 		$list = $db->query($sql)->fetchAll();
 		if ($list) {
 			return $list;
 		}
-		return array ();		
+		return array();		
 	}
 }
