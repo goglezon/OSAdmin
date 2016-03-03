@@ -4,7 +4,7 @@ class UserGroup extends Base {
 	// 表名
 	private static $table_name = 'user_group';
 	// 查询字段
-	private static $columns = array('group_id', 'group_name', 'group_role', 'owner_id' , 'group_desc');
+	private static $columns = array('group_id', 'group_name', 'group_role', 'owner_id', 'group_desc');
 
 	public static function getTableName(){
 		return parent::$table_prefix.self::$table_name;
@@ -13,8 +13,8 @@ class UserGroup extends Base {
 	//列表 
 	public static function getAllGroup() {
 		$db=self::__instance();
-		$columns = implode(self::$columns,',');
-		$sql="select ".$columns." ,u.user_name as owner_name from ".self::getTableName()." g left join ".User::getTableName()." u on g.owner_id =  u.user_id order by g.group_id";
+		$columns = implode(self::$columns, ',');
+		$sql = "select " . $columns . ", u.user_name as owner_name from ".self::getTableName()." g left join ".User::getTableName()." u on g.owner_id = u.user_id order by g.group_id";
 		$list = $db->query($sql)->fetchAll();
 		if ($list) {
 			
@@ -92,7 +92,7 @@ class UserGroup extends Base {
 	public static function getGroupUsers($group_id) {
 		$db=self::__instance();
 		$columns = implode(self::$columns,',');
-		$sql="select ".$columns." ,u.user_id as user_id,u.user_name as user_name,u.real_name as real_name from ".self::getTableName()." g,".User::getTableName()." u where g.group_id = $group_id and g.group_id = u.user_group order by g.group_id,u.user_id";
+		$sql = "select " . $columns . ", u.user_id as user_id, u.user_name as user_name, u.real_name as real_name from " . self::getTableName() . " g,".User::getTableName()." u where g.group_id = $group_id and g.group_id = u.user_group ORDER BY g.group_id, u.user_id";
 		$list = $db->query ($sql)->fetchAll();
 		if ($list) {
 			return $list;
