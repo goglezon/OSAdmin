@@ -1,5 +1,5 @@
 <?php
-if (!defined('ACCESS')) exit 'Access denied.';
+if (!defined('ACCESS')) exit('Access denied.');
 
 class MenuUrl extends Base
 {

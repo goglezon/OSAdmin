@@ -2,7 +2,7 @@
 if(!defined('ACCESS')) {exit('Access denied.');}
 class SysLog extends Base{
 	private static $table_name = 'sys_log';
-	private static $columns = array('op_id', 'user_name', 'action', 'class_name' , 'class_obj', 'result' , 'op_time');
+	private static $columns = array('op_id', 'user_name', 'action', 'class_name', 'class_obj', 'result', 'op_time');
 	
 	public static function getTableName(){
 		return parent::$table_prefix.self::$table_name;

@@ -44,6 +44,3 @@ Template::assign("change_password",$change_password);
 Template::assign("user_info",UserSession::getSessionInfo());
 Template::assign("quicknoteOptions",$quicknoteOptions);
 Template::display ( 'panel/profile.tpl' );
-?>
-
-

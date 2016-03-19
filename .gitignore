@@ -2,19 +2,19 @@
 ## Eclipse
 #################
 
-*.pydevproject
+.settings/
 .project
 .metadata
+.classpath
+.loadpath
 bin/
 tmp/
+local.properties
+*.pydevproject
 *.tmp
 *.bak
 *.swp
 *~.nib
-local.properties
-.classpath
-.settings/
-.loadpath
 
 # External tool builders
 .externalToolBuilders/
@@ -43,10 +43,10 @@ local.properties
 
 # Build results
 
-[Dd]ebug/
-[Rr]elease/
 x64/
 build/
+[Dd]ebug/
+[Rr]elease/
 [Bb]in/
 [Oo]bj/
 
@@ -54,6 +54,7 @@ build/
 [Tt]est[Rr]esult*/
 [Bb]uild[Ll]og.*
 
+.builds
 *_i.c
 *_p.c
 *.ilk
@@ -73,7 +74,6 @@ build/
 *.log
 *.vspscc
 *.vssscc
-.builds
 *.pidb
 *.log
 *.scc
@@ -141,10 +141,10 @@ AppPackages/
 
 # Others
 sql/
-*.Cache
 ClientBin/
 [Ss]tyle[Cc]op.*
 ~$*
+*.Cache
 *~
 *.dbmdl
 *.[Pp]ublish.xml
@@ -154,7 +154,7 @@ ClientBin/
 # RIA/Silverlight projects
 Generated_Code/
 
-# Backup & report files from converting an old project file to a newer
+# Backup and report files from converting an old project file to a newer
 # Visual Studio version. Backup files are not needed, because we have git ;-)
 _UpgradeReport_Files/
 Backup*/
@@ -190,8 +190,7 @@ $RECYCLE.BIN/
 *.py[co]
 
 # Packages
-*.egg
-*.egg-info
+.installed.cfg
 dist/
 build/
 eggs/
@@ -199,7 +198,8 @@ parts/
 var/
 sdist/
 develop-eggs/
-.installed.cfg
+*.egg
+*.egg-info
 
 # Installer logs
 pip-log.txt
@@ -208,8 +208,8 @@ pip-log.txt
 .coverage
 .tox
 
-#Translations
+# Translations
 *.mo
 
-#Mr Developer
+# Mr Developer
 .mr.developer.cfg
