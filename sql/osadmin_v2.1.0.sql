@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `osa_menu_url` (
   `menu_name` varchar(50) NOT NULL,
   `menu_url` varchar(255) NOT NULL,
   `module_id` int(11) NOT NULL,
-  `is_show` tinyint(4) NOT NULL COMMENT '是否在sidebar里出现',
+  `is_show` tinyint(4) NOT NULL COMMENT '是否在 sidebar 里出现',
   `online` int(11) NOT NULL DEFAULT '1' COMMENT '在线状态，还是下线状态，即可用，不可用。',
   `shortcut_allowed` int(10) unsigned NOT NULL DEFAULT '1' COMMENT '是否允许快捷访问',
   `menu_desc` varchar(255) DEFAULT NULL,
